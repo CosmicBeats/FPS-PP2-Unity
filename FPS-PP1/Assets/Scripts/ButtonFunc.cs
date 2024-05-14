@@ -8,7 +8,7 @@ public class ButtonFunc : MonoBehaviour
 {
     public void resume()
     {
-        //GameManager.instance.stateUnPause();
+        GameManager.instance.StateUnPause();
 
     }
 
@@ -16,7 +16,7 @@ public class ButtonFunc : MonoBehaviour
     {
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //GameManager.instance.stateUnPause();
+        GameManager.instance.StateUnPause();
 
     }
 

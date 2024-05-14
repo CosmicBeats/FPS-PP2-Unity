@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour ,IDamage
 {
     [SerializeField] CharacterController controller;
     [SerializeField] int HP;
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
+        //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
         movement();
     }
     void movement()
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
         sprint();
 
-        if (Input.GetButton("Fire1") && !isShooting)
+        if (Input.GetButton("Shoot") && !isShooting)
         {
             StartCoroutine(shoot());
         }
@@ -84,11 +84,11 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDistance))
         {
-            //IDamage dmg = hit.collider.GetComponent<IDamage>();
-            //if (hit.transform != transform && dmg != null)
-            //{
-            //    dmg.takeDamage(shootDamage);
-            //}
+            IDamage dmg = hit.collider.GetComponent<IDamage>();
+            if (hit.transform != transform && dmg != null)
+            {
+                dmg.takeDamage(shootDamage);
+            }
         }
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
@@ -98,14 +98,21 @@ public class PlayerController : MonoBehaviour
     {
         HP -= amount;
         updatePlayerUI();
+        StartCoroutine(FlashScreenDamage());
 
         if (HP <= 0)
         {
             GameManager.instance.StateLose();
         }
     }
+    IEnumerator FlashScreenDamage()
+    {
+        GameManager.instance.playerFlashDamage.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        GameManager.instance.playerFlashDamage.SetActive(false);
+    }
     void updatePlayerUI()
     {
-        //gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        GameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
     }
 }

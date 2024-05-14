@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5184748100573354416}
   - component: {fileID: 2902261842297660112}
   m_Layer: 0
-  m_Name: Enemy temp
+  m_Name: Enemy temp 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6491663476863791381}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53,9 +53,9 @@ MonoBehaviour:
   agent: {fileID: 5601091611120970844}
   model: {fileID: 7957417124388029567}
   shootPos: {fileID: 8330503093317897452}
-  Hp: 2
+  Hp: 3
   bullet: {fileID: 4846950324252070306, guid: 62a00e5d302a9214dbd000874b525c85, type: 3}
-  shootRate: 0.5
+  shootRate: 2
 --- !u!195 &5601091611120970844
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -66,13 +66,13 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 15
+  m_Speed: 1
+  m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 500
   m_StoppingDistance: 8
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1

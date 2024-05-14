@@ -17,24 +17,24 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     bool isShooting;
     bool playerInRange;
-
+    Color temp;
 
     // Start is called before the first frame update
     void Start()
     {
         //UNcommit when game goal is up
         GameManager.instance.UpdateGameGoalWin(1);
-
+         temp = model.material.color;
     }
 
     // Update is called once per frame
     void Update()
     {
        
-        agent.SetDestination(GameManager.instance.player.transform.position);
+        //agent.SetDestination(GameManager.instance.player.transform.position);
         if (playerInRange)
         {
-            //agent.SetDestination(GameManager.instance.player.transform.position);
+            agent.SetDestination(GameManager.instance.player.transform.position);
             if (!isShooting)
             {
                 StartCoroutine(shoot());
@@ -83,8 +83,9 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     IEnumerator flashRed()
     {
+
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        model.material.color = Color.white;
+        model.material.color = temp;
     }
 }
