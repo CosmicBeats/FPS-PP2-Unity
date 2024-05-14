@@ -55,7 +55,7 @@ MonoBehaviour:
   shootPos: {fileID: 8330503093317897452}
   Hp: 3
   bullet: {fileID: 4846950324252070306, guid: 62a00e5d302a9214dbd000874b525c85, type: 3}
-  shootRate: 1
+  shootRate: 0.8
 --- !u!195 &5601091611120970844
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -67,7 +67,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 15
+  m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 500
   m_StoppingDistance: 8
