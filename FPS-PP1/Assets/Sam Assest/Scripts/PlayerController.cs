@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour ,IDamage
 {
     [SerializeField] CharacterController controller;
     [SerializeField] int HP;
