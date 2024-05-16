@@ -31,15 +31,15 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5765131154064355132}
   - {fileID: 9084188453062744858}
   - {fileID: 4155165765003446034}
+  - {fileID: 2357255041479230555}
   - {fileID: 9089011573825399921}
   - {fileID: 1212047492831957869}
   - {fileID: 93839756161058733}
   - {fileID: 2379427966468113486}
-  - {fileID: 2357255041479230555}
   - {fileID: 2202600640513997879}
-  - {fileID: 5765131154064355132}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4225496448018924458}
   - component: {fileID: 4561380487275431475}
   m_Layer: 5
-  m_Name: restart
+  m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 7527286017304307898}
   - component: {fileID: 7798565649802748156}
   m_Layer: 5
-  m_Name: restart
+  m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -732,7 +732,7 @@ GameObject:
   - component: {fileID: 3689552233896025537}
   - component: {fileID: 3163580438254929705}
   m_Layer: 5
-  m_Name: restart
+  m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -999,7 +999,7 @@ GameObject:
   - component: {fileID: 905205252353507653}
   - component: {fileID: 5825336642566515765}
   m_Layer: 5
-  m_Name: quit
+  m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1266,7 +1266,7 @@ GameObject:
   - component: {fileID: 4580225820737797481}
   - component: {fileID: 6071936823853553212}
   m_Layer: 5
-  m_Name: quit
+  m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1398,7 +1398,7 @@ GameObject:
   - component: {fileID: 8334017071250714098}
   - component: {fileID: 9107500083896297497}
   m_Layer: 5
-  m_Name: crosshair
+  m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1473,7 +1473,7 @@ GameObject:
   - component: {fileID: 9196436004314680771}
   - component: {fileID: 2585315860732649628}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Enemy Count Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1609,7 +1609,7 @@ GameObject:
   - component: {fileID: 5319856955725371061}
   - component: {fileID: 8415839556879693567}
   m_Layer: 5
-  m_Name: resume
+  m_Name: Resume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2143,7 +2143,7 @@ GameObject:
   - component: {fileID: 3157456870662623232}
   - component: {fileID: 7638399255773337586}
   m_Layer: 5
-  m_Name: health bar back
+  m_Name: Health Bar Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3204,7 +3204,7 @@ GameObject:
   - component: {fileID: 6395111399614727567}
   - component: {fileID: 977177123459870703}
   m_Layer: 5
-  m_Name: quit
+  m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

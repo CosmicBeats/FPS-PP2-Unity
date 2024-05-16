@@ -31,8 +31,10 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        Time.timeScale = 1;
+
         player = GameObject.FindWithTag("Player");
-        //Uncomment the line below for player controller script - Paulo
+        
         playerScript = player.GetComponent<PlayerController>();
     }
 
