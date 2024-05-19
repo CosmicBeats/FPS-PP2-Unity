@@ -22,9 +22,9 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
-        //UNcommit when game goal is up
+        
         GameManager.instance.UpdateGameGoalWin(1);
-         temp = model.material.color;
+        temp = model.material.color;
     }
 
     // Update is called once per frame
@@ -66,7 +66,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         isShooting = false;
     }
 
-    public void takeDamage(int amount)
+    public void TakeDamage(int amount)
     {
         Hp -= amount;
        
@@ -75,8 +75,9 @@ public class EnemyAI : MonoBehaviour, IDamage
         StartCoroutine(flashRed());
         if (Hp <= 0)
         {
-            //UNcommit when game goal is up
+            
             GameManager.instance.UpdateGameGoalWin(-1);
+            
             Destroy(gameObject);
         }
     }
@@ -89,3 +90,6 @@ public class EnemyAI : MonoBehaviour, IDamage
         model.material.color = temp;
     }
 }
+
+
+

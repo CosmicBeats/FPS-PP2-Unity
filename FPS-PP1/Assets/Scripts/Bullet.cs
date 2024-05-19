@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
 
         if (dmg != null)
         {
-            dmg.takeDamage(damage);
+            dmg.TakeDamage(damage);
         }
 
         Destroy(gameObject);

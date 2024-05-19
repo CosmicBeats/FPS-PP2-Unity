@@ -5,8 +5,10 @@ using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour ,IDamage
 {
+    
+
     [SerializeField] CharacterController controller;
-    [SerializeField] int HP;
+    public int maxHP;
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
     [SerializeField] int jumpMax;
@@ -20,12 +22,14 @@ public class PlayerController : MonoBehaviour ,IDamage
     Vector3 moveDir;
     Vector3 playerVelocity;
     int jumpCount;
-    int HPOrig;
+    public int currentHP;
     bool isShooting;
+   
     // Start is called before the first frame update
     void Start()
     {
-        HPOrig = HP;
+       
+        currentHP = maxHP;
         updatePlayerUI();
     }
 
@@ -33,9 +37,9 @@ public class PlayerController : MonoBehaviour ,IDamage
     void Update()
     {
         //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
-        movement();
+        Movement();
     }
-    void movement()
+    void Movement()
     {
         if (controller.isGrounded)
         {
@@ -47,11 +51,11 @@ public class PlayerController : MonoBehaviour ,IDamage
                         + Input.GetAxis("Vertical") * transform.forward;
         controller.Move(moveDir * speed * Time.deltaTime);
 
-        sprint();
+        Sprint();
 
         if (Input.GetButton("Shoot") && !isShooting)
         {
-            StartCoroutine(shoot());
+            StartCoroutine(Shoot());
         }
 
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
@@ -64,7 +68,7 @@ public class PlayerController : MonoBehaviour ,IDamage
         controller.Move(playerVelocity * Time.deltaTime);
 
     }
-    void sprint()
+    void Sprint()
     {
         if (Input.GetButtonDown("Sprint"))
         {
@@ -76,7 +80,7 @@ public class PlayerController : MonoBehaviour ,IDamage
         }
 
     }
-    IEnumerator shoot()
+    IEnumerator Shoot()
     {
         isShooting = true;
 
@@ -87,32 +91,41 @@ public class PlayerController : MonoBehaviour ,IDamage
             IDamage dmg = hit.collider.GetComponent<IDamage>();
             if (hit.transform != transform && dmg != null)
             {
-                dmg.takeDamage(shootDamage);
+                dmg.TakeDamage(shootDamage);
             }
         }
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
     }
 
-    public void takeDamage(int amount)
+    public void TakeDamage(int amount)
     {
-        HP -= amount;
+        currentHP -= amount;
         updatePlayerUI();
         StartCoroutine(FlashScreenDamage());
 
-        if (HP <= 0)
+        if (currentHP <= 0)
         {
             GameManager.instance.StateLose();
         }
     }
+
+    public void Heal(int healPoints)
+    {
+        currentHP += healPoints;
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        updatePlayerUI();
+        Debug.Log("Player healed by " + healPoints + " points. Current HP: " + currentHP);
+    }
+
     IEnumerator FlashScreenDamage()
     {
         GameManager.instance.playerFlashDamage.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         GameManager.instance.playerFlashDamage.SetActive(false);
     }
-    void updatePlayerUI()
+    public void updatePlayerUI()
     {
-        GameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        GameManager.instance.playerHPBar.fillAmount = (float)currentHP / maxHP;
     }
 }
