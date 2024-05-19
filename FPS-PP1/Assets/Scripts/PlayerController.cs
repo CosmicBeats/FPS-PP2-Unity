@@ -107,6 +107,7 @@ public class PlayerController : MonoBehaviour ,IDamage
         if (currentHP <= 0)
         {
             GameManager.instance.StateLose();
+            GameManager.instance.loseAnimation.SetTrigger("Lose Trigger");
         }
     }
 
@@ -115,7 +116,6 @@ public class PlayerController : MonoBehaviour ,IDamage
         currentHP += healPoints;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
         updatePlayerUI();
-        Debug.Log("Player healed by " + healPoints + " points. Current HP: " + currentHP);
     }
 
     IEnumerator FlashScreenDamage()

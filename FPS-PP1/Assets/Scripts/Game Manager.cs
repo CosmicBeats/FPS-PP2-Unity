@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     
+
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
@@ -22,9 +23,16 @@ public class GameManager : MonoBehaviour
     public Image playerHPBar;
     public PlayerController playerScript;
     public GameObject player;
-    
 
-    int totalEnemyCount;
+    Doors doorScript;
+    bool hasPlayedWinAnimation;
+    bool hasPlayedLoseAnimation;
+
+    Animator winAnimation;
+    public Animator loseAnimation;
+
+    public int totalEnemyCount;
+    public bool isPaused;
     int enemyCount; 
 
     void Awake()
@@ -38,8 +46,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Time.timeScale = 1;
 
+        winAnimation = menuWin.GetComponent<Animator>();
+        loseAnimation = menuLose.GetComponent<Animator>();
+        
+        doorScript = GameObject.Find("Hidden Door").GetComponent<Doors>();
+        Time.timeScale = 1;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
     }
@@ -52,28 +64,46 @@ public class GameManager : MonoBehaviour
             {
                 menuActive = menuPause;
                 StatePause();
+                menuActive.SetActive(isPaused);
             }
-            else
+            else if(menuActive == menuPause)
             {
                 StateUnPause();
             }
         }
+        // To be adjusted for other buildings
+
+        //Adjust the number for enemies. 
+        if (totalEnemyCount <= 1)
+        {
+            doorScript.OpenHiddenDoor(0);
+        }
+        //else if (totalEnemyCount <= 1)
+        //{
+        //    doorScript.OpenHiddenDoor(1);
+        //}
+        //else if (totalEnemyCount <= 1)
+        //{
+        //    doorScript.OpenHiddenDoor(2);
+        //}
     }
 
     public void StatePause()
     {
+        isPaused = !isPaused;
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
-        menuPause.SetActive(true);
+        
     }
 
     public void StateUnPause()
     {
+        isPaused = !isPaused;
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        menuPause.SetActive(false);
+        menuActive.SetActive(isPaused);
         menuActive = null;
     }
 
@@ -82,37 +112,25 @@ public class GameManager : MonoBehaviour
         totalEnemyCount += totalAmount;
         totalEnemyCountText.text = totalEnemyCount.ToString("F0");
 
+
+
         if (totalEnemyCount <= 0)
         {
+            StatePause();
             menuActive = menuWin;
-            StartCoroutine(AnimateMenus());
+
+
+            winAnimation.SetTrigger("WinTrigger");
+           
         }
+        
     }
-
-
+    
     public void StateLose()
     {
+        StatePause();
         menuActive = menuLose;
-        StartCoroutine(AnimateMenus());
     }
-
-    IEnumerator AnimateMenus()
-    {
-        if (menuActive == menuWin)
-        {
-            menuWin.transform.LeanMoveLocalY(0, 1).setEaseOutQuart();
-            yield return new WaitForSeconds(1);
-            Time.timeScale = 0;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
-        }
-        else if (menuActive == menuLose)
-        {
-            menuLose.transform.LeanMoveLocalY(0, 1).setEaseOutQuart();
-            yield return new WaitForSeconds(1);
-            Time.timeScale = 0;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
-        }
-    }
+   
+    
 }

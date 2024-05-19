@@ -6,12 +6,29 @@ public class Keys : MonoBehaviour
 {
     [SerializeField] InventoryManager.Keys keyType;
 
-    private void OnTriggerEnter(Collider other)
+    bool isPlayerInRange;
+
+    void Update()
     {
-        if (other.CompareTag("Player"))
+        if(isPlayerInRange && Input.GetButtonDown("Interact"))
         {
             InventoryManager.instance.AddKey(keyType);
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            isPlayerInRange = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerInRange = false;
         }
     }
 }
