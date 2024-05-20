@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour ,IDamage
         {
             GameManager.instance.StateLose();
             GameManager.instance.loseAnimation.SetTrigger("Lose Trigger");
+            
         }
     }
 

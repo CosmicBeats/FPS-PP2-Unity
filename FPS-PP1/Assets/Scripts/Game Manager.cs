@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using static UnityEngine.GraphicsBuffer;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -25,8 +25,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
 
     Doors doorScript;
-    bool hasPlayedWinAnimation;
-    bool hasPlayedLoseAnimation;
+   
 
     Animator winAnimation;
     public Animator loseAnimation;

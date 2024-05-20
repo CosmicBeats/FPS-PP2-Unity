@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
+
 
 public class EnemyAI : MonoBehaviour, IDamage
 {
@@ -30,7 +29,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-       
+        //Uncomment below for "Wave zomibies" and comment out the other line.
         //agent.SetDestination(GameManager.instance.player.transform.position);
         if (playerInRange)
         {

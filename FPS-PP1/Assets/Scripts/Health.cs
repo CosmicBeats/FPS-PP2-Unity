@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [Range(0, 1)][SerializeField] float healRate; // Time in seconds between each heal tick
+    [Range(0, 1)][SerializeField] float healRate; 
     [SerializeField] int healPoints;
     bool isPlayerInRange;
     PlayerController playerController;

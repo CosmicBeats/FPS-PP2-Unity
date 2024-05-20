@@ -1,14 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class KeypadBehaviour : MonoBehaviour
 {
     [SerializeField] Doors door;
-
     [SerializeField] InventoryManager.Keys requiredKey;
+    [SerializeField] GameObject keypadCanvas;
+    [SerializeField] TMP_Text keypadText;
+    [SerializeField] AudioSource accessGranted, accessDenied, audioClick;
 
+    Image imageColor;
     bool playerInRange;
+
+    private void Start()
+    {
+        
+        imageColor = keypadCanvas.GetComponent<Image>();
+        
+        if (keypadText == null)
+        {
+            Debug.LogError("TMP_Text component not found on keypadCanvas.");
+        }
+    }
+
 
     private void Update()
     {
@@ -17,11 +34,17 @@ public class KeypadBehaviour : MonoBehaviour
             if (HasRequiredKey(requiredKey))
             {
                 door.OpenDoor();
+                imageColor.color = Color.green;
+                audioClick.Play();
+                accessGranted.PlayDelayed(0.5f);
+                keypadText.text = "Granted";
             }
             else
             {
-                //Add UI Later
-                Debug.Log("You do not have the key for this door!!!");
+                imageColor.color = Color.red;
+                audioClick.Play();
+                accessDenied.PlayDelayed(0.5f);
+                keypadText.text = "Denied";
             }
 
         }
