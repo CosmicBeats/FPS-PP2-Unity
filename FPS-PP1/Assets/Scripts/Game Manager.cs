@@ -17,14 +17,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] TMP_Text totalEnemyCountText;
-    [SerializeField] TMP_Text enemyCountText;
+    
 
     public GameObject playerFlashDamage;
     public Image playerHPBar;
     public PlayerController playerScript;
     public GameObject player;
 
+    private List<GameObject> totalEnemies;
+    public List<GameObject> localEnemies;
+
     Doors doorScript;
+    GameObject hiddenDoor;
    
 
     Animator winAnimation;
@@ -32,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     public int totalEnemyCount;
     public bool isPaused;
-    int enemyCount; 
+   
 
     void Awake()
     {
@@ -44,15 +48,23 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-
+       
         winAnimation = menuWin.GetComponent<Animator>();
         loseAnimation = menuLose.GetComponent<Animator>();
-        
-        doorScript = GameObject.Find("Hidden Door").GetComponent<Doors>();
+
+        localEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("EnemyAI"));
+
+        totalEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("EnemyAI"));
+
         Time.timeScale = 1;
+
+        hiddenDoor = GameObject.FindWithTag("Hidden Door");
+        doorScript = hiddenDoor.GetComponent<Doors>();
+
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
+
+        Debug.Log("There are " + totalEnemies.Count + " in the scene.");
     }
 
     void Update()
@@ -70,21 +82,7 @@ public class GameManager : MonoBehaviour
                 StateUnPause();
             }
         }
-        // To be adjusted for other buildings
-
-        //Adjust the number for enemies. 
-        if (totalEnemyCount <= 1)
-        {
-            doorScript.OpenHiddenDoor(0);
-        }
-        //else if (totalEnemyCount <= 1)
-        //{
-        //    doorScript.OpenHiddenDoor(1);
-        //}
-        //else if (totalEnemyCount <= 1)
-        //{
-        //    doorScript.OpenHiddenDoor(2);
-        //}
+        
     }
 
     public void StatePause()
@@ -106,25 +104,48 @@ public class GameManager : MonoBehaviour
         menuActive = null;
     }
 
-    public void UpdateGameGoalWin(int totalAmount)
+    public void UpdateGameGoalWin()
     {
-        totalEnemyCount += totalAmount;
+        totalEnemyCount = totalEnemies.Count;
         totalEnemyCountText.text = totalEnemyCount.ToString("F0");
-
-
 
         if (totalEnemyCount <= 0)
         {
             StatePause();
             menuActive = menuWin;
-
-
             winAnimation.SetTrigger("WinTrigger");
-           
+        }
+        else if(totalEnemyCount <= 4)
+        {
+            doorScript.OpenHiddenDoor();
         }
         
     }
-    
+
+
+    public void AddEnemy(GameObject enemy)
+    {
+        if(!totalEnemies.Contains(enemy))
+        {
+            totalEnemies.Add(enemy);
+            UpdateGameGoalWin();
+        }
+    }
+
+    public void RemoveEnemy(GameObject enemy)
+    {
+        if (totalEnemies.Contains(enemy))
+        {
+            totalEnemies.Remove(enemy);
+            UpdateGameGoalWin();
+        }
+    }
+
+    public void EnemyDefeated(GameObject enemy)
+    {
+        RemoveEnemy(enemy);
+    }
+
     public void StateLose()
     {
         StatePause();

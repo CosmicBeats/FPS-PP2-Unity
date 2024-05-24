@@ -6,6 +6,9 @@ TagManager:
   tags:
   - EnemyAI
   - Hidden Door
+  - PW - Nature
+  - PW - Prop
+  - Local Trigger
   layers:
   - Default
   - TransparentFX

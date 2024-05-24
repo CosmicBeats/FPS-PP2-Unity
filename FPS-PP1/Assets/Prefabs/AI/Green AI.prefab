@@ -53,7 +53,7 @@ MonoBehaviour:
   agent: {fileID: 5601091611120970844}
   model: {fileID: 7957417124388029567}
   shootPos: {fileID: 8330503093317897452}
-  Hp: 1
+  Hp: 4
   bullet: {fileID: 4846950324252070306, guid: 62a00e5d302a9214dbd000874b525c85, type: 3}
   shootRate: 0.5
 --- !u!195 &5601091611120970844
