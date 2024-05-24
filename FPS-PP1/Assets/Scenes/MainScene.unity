@@ -826,6 +826,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.058
       objectReference: {fileID: 0}
+    - target: {fileID: 8221354315470892115, guid: 8021c1f8a5f76db4ba9d4e0475fafb7c, type: 3}
+      propertyPath: armor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8221354315470892115, guid: 8021c1f8a5f76db4ba9d4e0475fafb7c, type: 3}
+      propertyPath: MaxArmor
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2738008765766383990, guid: 8021c1f8a5f76db4ba9d4e0475fafb7c, type: 3}
     m_RemovedGameObjects: []
@@ -938,7 +946,7 @@ PrefabInstance:
       objectReference: {fileID: 661980091}
     - target: {fileID: 6449234608016468887, guid: f91460d3fa1d73144bb6f0f680add3b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 145.50821
+      value: 131.6
       objectReference: {fileID: 0}
     - target: {fileID: 6449234608016468887, guid: f91460d3fa1d73144bb6f0f680add3b8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -946,7 +954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6449234608016468887, guid: f91460d3fa1d73144bb6f0f680add3b8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 268.27658
+      value: 237.7
       objectReference: {fileID: 0}
     - target: {fileID: 6449234608016468887, guid: f91460d3fa1d73144bb6f0f680add3b8, type: 3}
       propertyPath: m_LocalRotation.w

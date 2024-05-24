@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour ,IDamage
 
     [SerializeField] CharacterController controller;
     public int maxHP;
+    public int MaxArmor;
+
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
     [SerializeField] int jumpMax;
@@ -19,8 +21,7 @@ public class PlayerController : MonoBehaviour ,IDamage
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;
 
-    public int MaxArmor;
-    public int armor;
+    public int currentArmor;
     Vector3 moveDir;
     Vector3 playerVelocity;
     int jumpCount;
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour ,IDamage
     // Start is called before the first frame update
     void Start()
     {
-        armor =MaxArmor;
+        currentArmor =MaxArmor;
         currentHP = maxHP;
         updatePlayerUI();
     }
@@ -102,11 +103,11 @@ public class PlayerController : MonoBehaviour ,IDamage
 
     public void TakeDamage(int amount)
     {
-        if(armor > 0)
+        if(currentArmor > 0)
         {
 
             currentHP -= amount/2;
-            armor -= 1;
+            currentArmor -= 1;
         }
         else
         {
@@ -139,6 +140,6 @@ public class PlayerController : MonoBehaviour ,IDamage
     public void updatePlayerUI()
     {
         GameManager.instance.playerHPBar.fillAmount = (float)currentHP / maxHP;
-        GameManager.instance.playerArmorBar.fillAmount = (float)armor / MaxArmor;
+        GameManager.instance.playerArmorBar.fillAmount = (float)currentArmor / MaxArmor;
     }
 }
