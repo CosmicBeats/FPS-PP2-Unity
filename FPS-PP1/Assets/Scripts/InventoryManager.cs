@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using static InventoryManager;
 
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
-
+  
     public List<Keys> allKeys = new List<Keys>();
 
     private void Awake()
     {
+
         instance = this;
     }
+
+
 
     public void AddKey(Keys key)
     {
@@ -36,4 +41,6 @@ public class InventoryManager : MonoBehaviour
         secondBuildingKey,
         thirdBuildingKey,
     }
+
+    
 }

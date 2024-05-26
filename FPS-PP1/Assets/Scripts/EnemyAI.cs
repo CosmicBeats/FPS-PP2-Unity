@@ -18,14 +18,12 @@ public class EnemyAI : MonoBehaviour, IDamage
     bool playerInRange;
     Color temp;
 
-    LocalTrigger triggerScript;
-    [SerializeField] GameObject trigger;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        trigger = GameObject.FindWithTag("Local Trigger");
-        triggerScript = trigger.GetComponent<LocalTrigger>();
+        
         GameManager.instance.UpdateGameGoalWin();
         GameManager.instance.AddEnemy(gameObject);
         temp = model.material.color;
@@ -81,8 +79,8 @@ public class EnemyAI : MonoBehaviour, IDamage
         StartCoroutine(flashRed());
         if (Hp <= 0)
         {
-            triggerScript.localEnemyCount--;
-            triggerScript.UpdateEnemyCountText();
+            GameManager.instance.triggerScript.localEnemyCount--;
+            GameManager.instance.triggerScript.UpdateEnemyCountText();
             GameManager.instance.RemoveEnemy(gameObject);
             Destroy(gameObject);
         }

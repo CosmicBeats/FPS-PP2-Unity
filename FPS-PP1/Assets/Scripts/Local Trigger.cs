@@ -25,13 +25,16 @@ public class LocalTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
-            GameObject enemy = other.gameObject;
-            GameManager.instance.localEnemies.Add(enemy);
+        {      
             localEnemyCountLabel.SetActive(true);
             localEnemyCount = GameManager.instance.localEnemies.Count - 1;
             localEnemyCountText.text = localEnemyCount.ToString("F0");
-            Debug.Log(enemy.name + " entered the trigger.");
+        }
+
+        if(other.CompareTag("EnemyAI"))
+        {
+            GameObject enemy = other.gameObject;
+            GameManager.instance.localEnemies.Add(enemy);
         }
     }
 
@@ -40,12 +43,16 @@ public class LocalTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameObject enemy = other.gameObject;
-            GameManager.instance.localEnemies.Remove(enemy);
+            
             localEnemyCountLabel.SetActive(false);
             localEnemyCount = 0;
             localEnemyCountText.text = localEnemyCount.ToString("F0");
-            Debug.Log(enemy.name + " exited the trigger.");
+        }
+
+        if (other.CompareTag("EnemyAI"))
+        {
+            GameObject enemy = other.gameObject;
+            GameManager.instance.localEnemies.Remove(enemy);
         }
 
 

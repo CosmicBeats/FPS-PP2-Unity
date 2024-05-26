@@ -20,10 +20,7 @@ public class KeypadBehaviour : MonoBehaviour
         
         imageColor = keypadCanvas.GetComponent<Image>();
         
-        if (keypadText == null)
-        {
-            Debug.LogError("TMP_Text component not found on keypadCanvas.");
-        }
+        
     }
 
 

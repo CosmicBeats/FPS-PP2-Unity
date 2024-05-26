@@ -89,6 +89,8 @@ public class PlayerController : MonoBehaviour ,IDamage
 
         RaycastHit hit;
 
+        
+
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDistance))
         {
             IDamage dmg = hit.collider.GetComponent<IDamage>();
@@ -142,4 +144,5 @@ public class PlayerController : MonoBehaviour ,IDamage
         GameManager.instance.playerHPBar.fillAmount = (float)currentHP / maxHP;
         GameManager.instance.playerArmorBar.fillAmount = (float)currentArmor / MaxArmor;
     }
+    
 }

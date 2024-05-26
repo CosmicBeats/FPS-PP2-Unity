@@ -9,6 +9,8 @@ TagManager:
   - PW - Nature
   - PW - Prop
   - Local Trigger
+  - Keycard
+  - Keypad
   layers:
   - Default
   - TransparentFX

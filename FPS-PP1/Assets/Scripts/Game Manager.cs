@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] TMP_Text totalEnemyCountText;
     
+    
 
     public GameObject playerFlashDamage;
     public Image playerHPBar;
@@ -30,7 +31,12 @@ public class GameManager : MonoBehaviour
 
     Doors doorScript;
     GameObject hiddenDoor;
-   
+
+    public LocalTrigger triggerScript;
+    [SerializeField] GameObject trigger;
+
+    [SerializeField] LocalTrigger[] localTriggers;
+
 
     Animator winAnimation;
     public Animator loseAnimation;
@@ -57,6 +63,9 @@ public class GameManager : MonoBehaviour
 
         totalEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("EnemyAI"));
 
+        trigger = GameObject.FindWithTag("Local Trigger");
+        triggerScript = trigger.GetComponent<LocalTrigger>();
+
         Time.timeScale = 1;
 
         hiddenDoor = GameObject.FindWithTag("Hidden Door");
@@ -65,7 +74,9 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
 
-        Debug.Log("There are " + totalEnemies.Count + " in the scene.");
+        
+
+       
     }
 
     void Update()
