@@ -31,9 +31,11 @@ public class PlayerController : MonoBehaviour ,IDamage
     // Start is called before the first frame update
     void Start()
     {
-        currentArmor =MaxArmor;
-        currentHP = maxHP;
-        updatePlayerUI();
+        //currentArmor =MaxArmor;
+        //currentHP = maxHP;
+        //updatePlayerUI();
+
+        SpawnPlayer();
     }
 
     // Update is called once per frame
@@ -145,4 +147,14 @@ public class PlayerController : MonoBehaviour ,IDamage
         GameManager.instance.playerArmorBar.fillAmount = (float)currentArmor / MaxArmor;
     }
     
+    public void SpawnPlayer()
+    {
+        currentHP = maxHP;
+        currentArmor = MaxArmor;
+
+        updatePlayerUI();
+        controller.enabled = false;
+        transform.position = GameManager.instance.playerSpawnPos.transform.position;
+        controller.enabled = true;
+    }
 }
