@@ -15,13 +15,13 @@ MonoBehaviour:
   gunModel: {fileID: 5539744689771151918, guid: 81780990191a7d84fb0126ca087b6d7c, type: 3}
   shootDamage: 2
   shootDistance: 25
-  shootRate: 0.41
-  currentAmmo: 45
+  shootRate: 0.3
+  currentAmmo: 38
   maxAmmo: 45
   reloadTime: 1.5
   isReloading: 0
   gunAnimator: {fileID: 0}
-  gunParticle: {fileID: 0}
+  gunParticle: {fileID: 4350284764221164168, guid: daf9659810c2fa24da66b571bc569e44, type: 3}
   shootSound: {fileID: 8300000, guid: 947719fd38845824ba3638af9d8e4e54, type: 3}
   shootVolume: 0
   icon: {fileID: 0}
