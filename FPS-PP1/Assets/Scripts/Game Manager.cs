@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     public Image playerArmorBar;
     public PlayerController playerScript;
     public GameObject player;
+    //tyler
+  /*  public GameObject checkpointPopup;
+    public GameObject playerSpawnPos;*/
 
     private List<GameObject> totalEnemies;
     public List<GameObject> localEnemies;
