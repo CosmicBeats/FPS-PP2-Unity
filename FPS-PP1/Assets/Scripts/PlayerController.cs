@@ -297,7 +297,7 @@ public class PlayerController : MonoBehaviour ,IDamage
     public void SpawnPlayer()
     {
         currentHP = maxHP;
-        currentArmor = MaxArmor;
+        currentArmor = 0;
         gunAudioSource = gameObject.AddComponent<AudioSource>(); //Put in project!
 
         UpdateGunSound();

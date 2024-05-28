@@ -67,13 +67,13 @@ public class GameManager : MonoBehaviour
 
         totalEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("EnemyAI"));
 
-        trigger = GameObject.FindWithTag("Local Trigger");
-        triggerScript = trigger.GetComponent<LocalTrigger>();
+        //trigger = GameObject.FindWithTag("Local Trigger");
+        //triggerScript = trigger.GetComponent<LocalTrigger>();
 
         Time.timeScale = 1;
 
-        hiddenDoor = GameObject.FindWithTag("Hidden Door");
-        doorScript = hiddenDoor.GetComponent<Doors>();
+        //hiddenDoor = GameObject.FindWithTag("Hidden Door");
+        //doorScript = hiddenDoor.GetComponent<Doors>();
 
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
