@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f793caad438f8747ad86fe3316806cf, type: 3}
+  m_Name: Gun - Heavy
+  m_EditorClassIdentifier: 
+  gunModel: {fileID: 5539744689771151918, guid: 81780990191a7d84fb0126ca087b6d7c, type: 3}
+  shootDamage: 2
+  shootDistance: 25
+  shootRate: 0.41
+  currentAmmo: 45
+  maxAmmo: 45
+  reloadTime: 1.5
+  isReloading: 0
+  gunAnimator: {fileID: 0}
+  gunParticle: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 947719fd38845824ba3638af9d8e4e54, type: 3}
+  shootVolume: 0
+  icon: {fileID: 0}

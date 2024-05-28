@@ -20,7 +20,16 @@ public class PlayerController : MonoBehaviour ,IDamage
     [SerializeField] int shootDamage;
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;
+    [SerializeField] Animator gunAnimator;
+    [SerializeField] GameObject gunModel;
+    public GunStats gunStats;
+    [SerializeField] List<GunStats> gunList = new List<GunStats>();
+    
 
+    ParticleSystem gunParticle;
+    
+    AudioSource gunAudioSource;
+    int selectedGun;
     public int currentArmor;
     Vector3 moveDir;
     Vector3 playerVelocity;
@@ -33,7 +42,19 @@ public class PlayerController : MonoBehaviour ,IDamage
     {
         currentArmor =MaxArmor;
         currentHP = maxHP;
+
+        gunAudioSource = gameObject.AddComponent<AudioSource>(); //Put in project!
+
+        UpdateGunSound();
         updatePlayerUI();
+    }
+
+    void OnEnable()
+    {
+        if (gunList.Count > 0 && selectedGun >= 0 && selectedGun < gunList.Count)
+        {
+            gunList[selectedGun].isReloading = false;
+        }
     }
 
     // Update is called once per frame
@@ -41,6 +62,8 @@ public class PlayerController : MonoBehaviour ,IDamage
     {
         //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
         Movement();
+        SelectGun();
+        Reloading();
     }
     void Movement()
     {
@@ -56,8 +79,9 @@ public class PlayerController : MonoBehaviour ,IDamage
 
         Sprint();
 
-        if (Input.GetButton("Shoot") && !isShooting)
+        if (Input.GetButton("Shoot") && gunList.Count > 0 && gunList[selectedGun].currentAmmo > 0 && !isShooting && !gunList[selectedGun].isReloading)
         {
+            Debug.Log("Shoot");
             StartCoroutine(Shoot());
         }
 
@@ -87,10 +111,16 @@ public class PlayerController : MonoBehaviour ,IDamage
     {
         isShooting = true;
 
+        gunList[selectedGun].currentAmmo--;
+
+
+        //gunParticle.Play();
+
+        gunAudioSource.Play();
+
         RaycastHit hit;
 
-        
-
+       
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDistance))
         {
             IDamage dmg = hit.collider.GetComponent<IDamage>();
@@ -101,6 +131,122 @@ public class PlayerController : MonoBehaviour ,IDamage
         }
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+    }
+
+    public void Reloading()
+    {
+        if (gunList.Count > 0 && selectedGun >= 0 && selectedGun < gunList.Count)
+        {
+            if (gunList[selectedGun].isReloading || isShooting)
+            {
+                return;
+            }
+            else if (gunList[selectedGun].currentAmmo <= 0 || Input.GetButtonDown("Reload"))
+            {
+                StartCoroutine(Reload());
+            }
+        }
+    }
+
+    public void GetGunStats(GunStats gunStats)
+    {
+        gunStats.isReloading = false;
+
+        gunList.Add(gunStats);
+
+
+        selectedGun = gunList.Count - 1;
+
+        shootDamage = gunStats.shootDamage;
+        shootDistance = gunStats.shootDistance;
+        shootRate = gunStats.shootRate;
+        gunParticle = gunStats.gunParticle;
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunStats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunStats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        UpdateGunSound();
+
+        ChangeGun();
+
+
+    }
+
+    void SelectGun()
+    {
+
+        if (gunList.Count == 0 || selectedGun < 0 || selectedGun >= gunList.Count)
+        {
+            return;
+        }
+
+        if (gunList[selectedGun].isReloading)
+        {
+            return;
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedGun < gunList.Count - 1)
+        {
+            selectedGun++;
+
+            UpdateGunSound();
+
+            ChangeGun();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedGun > 0)
+        {
+            selectedGun--;
+
+            UpdateGunSound();
+
+            ChangeGun();
+        }
+    }
+
+    void UpdateGunSound()
+    {
+        if (gunList.Count > 0 && selectedGun >= 0 && selectedGun < gunList.Count)
+        {
+            gunAudioSource.clip = gunList[selectedGun].shootSound;
+
+        }
+    }
+
+    void ChangeGun()
+    {
+        if (gunList.Count > 0 && selectedGun >= 0 && selectedGun < gunList.Count)
+        {
+            GunStats currentGun = gunList[selectedGun];
+
+            shootDamage = currentGun.shootDamage;
+            shootDistance = currentGun.shootDistance;
+            shootRate = currentGun.shootRate;
+
+            gunParticle = currentGun.gunParticle;
+
+            gunModel.GetComponent<MeshFilter>().sharedMesh = currentGun.gunModel.GetComponent<MeshFilter>().sharedMesh;
+            gunModel.GetComponent<MeshRenderer>().sharedMaterial = currentGun.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        }
+    }
+
+    IEnumerator Reload() //Put in project!
+    {
+        if (gunList.Count > 0 && selectedGun >= 0 && selectedGun < gunList.Count)
+        {
+            gunList[selectedGun].isReloading = true;
+
+            gunAnimator.SetBool("Reloading", true);
+
+            yield return new WaitForSeconds(gunList[selectedGun].reloadTime - .25f);
+
+
+            gunList[selectedGun].isReloading = false;
+
+            gunAnimator.SetBool("Reloading", false);
+            yield return new WaitForSeconds(.25f);
+
+            gunList[selectedGun].currentAmmo = gunList[selectedGun].maxAmmo;
+
+
+        }
     }
 
     public void TakeDamage(int amount)

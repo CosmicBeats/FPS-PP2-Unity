@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f793caad438f8747ad86fe3316806cf, type: 3}
+  m_Name: Gun - Light
+  m_EditorClassIdentifier: 
+  gunModel: {fileID: 6067459842167465671, guid: ba45a1fe2a4fcae40b9da17346c1b348, type: 3}
+  shootDamage: 1
+  shootDistance: 25
+  shootRate: 0.1
+  currentAmmo: 30
+  maxAmmo: 30
+  reloadTime: 1
+  isReloading: 0
+  gunAnimator: {fileID: 0}
+  gunParticle: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 92d35fe1c59bbd14eaee9e3d3b54cea7, type: 3}
+  shootVolume: 0
+  icon: {fileID: 0}
