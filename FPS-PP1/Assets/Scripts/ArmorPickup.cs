@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ArmorPickup : MonoBehaviour
 {
-    [SerializeField]  PlayerController playerController;
+    [SerializeField] PlayerController playerController;
+    [Range(1,2)][SerializeField] int armorType;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +19,19 @@ public class ArmorPickup : MonoBehaviour
         {
             if(playerController.currentArmor < playerController.MaxArmor) 
             {
-                playerController.currentArmor = playerController.MaxArmor;
-                Destroy(gameObject);
+                if(armorType == 1)
+                {
+
+                    playerController.currentArmor = playerController.MaxArmor;
+                    Destroy(gameObject);
+                    playerController.updatePlayerUI();
+                }
+                if(armorType == 2)
+                {
+                    playerController.currentArmor = playerController.MaxArmor/2;
+                    Destroy(gameObject);
+                    playerController.updatePlayerUI();
+                }
             }
         }
     }
