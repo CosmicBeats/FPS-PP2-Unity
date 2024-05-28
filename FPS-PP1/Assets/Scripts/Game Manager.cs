@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public Image playerHPBar;
     public Image playerArmorBar;
     public PlayerController playerScript;
+    public GameObject playerSpawnPos;
     public GameObject player;
     //tyler
   /*  public GameObject checkpointPopup;
