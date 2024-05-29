@@ -10,11 +10,11 @@ using UnityEngine.UI;
 public class EnemyAI : MonoBehaviour, IDamage
 {
     //just make the enemy work
-    //[SerializeField] Animator anim;
+    [SerializeField] Animator anim;
      [SerializeField] NavMeshAgent agent;
      [SerializeField] Renderer model;
     [SerializeField] Transform shootPos;
-    //[SerializeField] Transform headPos;
+    [SerializeField] Transform headPos;
 
     [SerializeField] int Hp;
     [SerializeField] int viewAngle;
@@ -45,7 +45,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     void Start()
     {
         
-        GameManager.instance.UpdateGameGoalWin();
+       // GameManager.instance.UpdateGameGoalWin();
         GameManager.instance.AddEnemy(gameObject);
         temp = model.material.color;
         startingPos = transform.position;
@@ -58,35 +58,24 @@ public class EnemyAI : MonoBehaviour, IDamage
         //Uncomment below for "Wave zomibies" and comment out the other line.
         //agent.SetDestination(GameManager.instance.player.transform.position);
         //UNCOMMIT for can see player
-        /*   float animSpeed = agent.velocity.normalized.magnitude;
-           anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));*/
-        /*
+          float animSpeed = agent.velocity.normalized.magnitude;
+           anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
+        
                 if (playerInRange && canSeePlayer())
                 {
-                    agent.SetDestination(GameManager.instance.player.transform.position);
-                    if (!isShooting)
-                    {
-                        StartCoroutine(shoot());
-                    }
-                    else if (!playerInRange)
-                    {
-                        StartCoroutine(roam());
-                    }
-                }*/
-
-        agent.SetDestination(GameManager.instance.player.transform.position);
-        if (playerInRange)
-        {
             //agent.SetDestination(GameManager.instance.player.transform.position);
-            if (!isShooting)
-            {
-                StartCoroutine(shoot());
-            }
-            else if (!playerInRange)
-            {
-                StartCoroutine(roam());
-            }
+            /* if (!isShooting)
+             {
+                 StartCoroutine(shoot());
+             }*/
+            StartCoroutine(roam());
+                   
+                }
+        else if (!playerInRange)
+        {
+            StartCoroutine(roam());
         }
+
     }
     IEnumerator roam()
     {
@@ -107,7 +96,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         }
     }
     //head model needed 
-   /* bool canSeePlayer()
+    bool canSeePlayer()
     {
         playerDir = GameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y + 1, playerDir.z), transform.forward);
@@ -137,7 +126,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         }
         agent.stoppingDistance = 0;
         return false;
-    }*/
+    }
     void faceTarget()
     {
         Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, 0, playerDir.z));
@@ -162,10 +151,15 @@ public class EnemyAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isShooting = true;
+        anim.SetTrigger("Shoot");
         Instantiate(bullet, shootPos.position, transform.rotation);
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+    }
+    public void createBullet()
+    {
+        Instantiate(bullet, shootPos.position, transform.rotation);
     }
 
     public void TakeDamage(int amount)
