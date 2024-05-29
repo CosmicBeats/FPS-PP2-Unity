@@ -45,7 +45,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     void Start()
     {
         
-       // GameManager.instance.UpdateGameGoalWin();
+        GameManager.instance.UpdateGameGoalWin();
         GameManager.instance.AddEnemy(gameObject);
         temp = model.material.color;
         startingPos = transform.position;
@@ -64,10 +64,10 @@ public class EnemyAI : MonoBehaviour, IDamage
                 if (playerInRange && canSeePlayer())
                 {
             //agent.SetDestination(GameManager.instance.player.transform.position);
-            /* if (!isShooting)
+             if (!isShooting)
              {
                  StartCoroutine(shoot());
-             }*/
+             }
             StartCoroutine(roam());
                    
                 }

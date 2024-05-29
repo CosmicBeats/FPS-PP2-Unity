@@ -27,7 +27,7 @@ public class LocalTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {      
             localEnemyCountLabel.SetActive(true);
-            localEnemyCount = GameManager.instance.localEnemies.Count - 1;
+            localEnemyCount = GameManager.instance.localEnemies.Count;
             localEnemyCountText.text = localEnemyCount.ToString("F0");
         }
 
