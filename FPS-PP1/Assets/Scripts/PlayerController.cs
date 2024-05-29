@@ -272,7 +272,7 @@ public class PlayerController : MonoBehaviour ,IDamage
         }
     }
 
-    IEnumerator Reload() //Put in project!
+    IEnumerator Reload() 
     {
         if (gunList.Count > 0 && selectedGun >= 0 && selectedGun < gunList.Count)
         {
@@ -298,7 +298,7 @@ public class PlayerController : MonoBehaviour ,IDamage
     {
         currentHP = maxHP;
         currentArmor = 0;
-        gunAudioSource = gameObject.AddComponent<AudioSource>(); //Put in project!
+        gunAudioSource = gameObject.AddComponent<AudioSource>(); 
 
         UpdateGunSound();
 

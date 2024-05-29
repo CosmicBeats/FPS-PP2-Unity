@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
+  armorType: 0
 --- !u!23 &3772998508448469076
 MeshRenderer:
   m_ObjectHideFlags: 0
