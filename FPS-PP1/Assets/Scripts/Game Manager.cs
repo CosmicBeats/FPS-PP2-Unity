@@ -26,12 +26,15 @@ public class GameManager : MonoBehaviour
     public PlayerController playerScript;
     public GameObject playerSpawnPos;
     public GameObject player;
-    //tyler
-  /*  public GameObject checkpointPopup;
-    public GameObject playerSpawnPos;*/
+    
+    public GameObject checkpointPopup;
+    
 
     private List<GameObject> totalEnemies;
     public List<GameObject> localEnemies;
+    [SerializeField] LocalTrigger[] localTriggers;
+
+    
 
     Doors doorScript;
     GameObject hiddenDoor;
@@ -39,7 +42,7 @@ public class GameManager : MonoBehaviour
     public LocalTrigger triggerScript;
     [SerializeField] GameObject trigger;
 
-    [SerializeField] LocalTrigger[] localTriggers;
+    
 
 
     Animator winAnimation;
