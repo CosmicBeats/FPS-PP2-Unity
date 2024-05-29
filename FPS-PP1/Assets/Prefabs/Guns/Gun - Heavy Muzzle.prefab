@@ -4912,7 +4912,7 @@ GameObject:
   - component: {fileID: 4350284764221164168}
   - component: {fileID: 1458242165402929890}
   m_Layer: 0
-  m_Name: Gun - Heavy
+  m_Name: Gun - Heavy Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

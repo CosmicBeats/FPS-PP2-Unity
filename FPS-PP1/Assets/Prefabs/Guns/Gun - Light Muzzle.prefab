@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7805852503430791416}
   - component: {fileID: 4689936845240339819}
   m_Layer: 0
-  m_Name: Gun - Light
+  m_Name: Gun - Light Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
