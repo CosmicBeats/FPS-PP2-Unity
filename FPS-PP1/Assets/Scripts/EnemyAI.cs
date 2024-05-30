@@ -35,7 +35,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     Vector3 startingPos;
 
 
-    LocalTrigger triggerScript;
+    
     [SerializeField] GameObject trigger;
     float angleToPlayer;
     float stoppingDisOrig;
@@ -45,7 +45,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     void Start()
     {
         
-        GameManager.instance.UpdateGameGoalWin();
+        
         GameManager.instance.AddEnemy(gameObject);
         temp = model.material.color;
         startingPos = transform.position;
@@ -173,8 +173,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         StartCoroutine(flashRed());
         if (Hp <= 0)
         {
-            GameManager.instance.triggerScript.localEnemyCount--;
-            GameManager.instance.triggerScript.UpdateEnemyCountText();
+            GameManager.instance.UpdateGameGoalWin(-1);
             GameManager.instance.RemoveEnemy(gameObject);
             Destroy(gameObject);
         }

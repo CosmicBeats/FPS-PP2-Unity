@@ -31,19 +31,10 @@ public class GameManager : MonoBehaviour
     
 
     private List<GameObject> totalEnemies;
-    public List<GameObject> localEnemies;
-    [SerializeField] LocalTrigger[] localTriggers;
-
     
 
     Doors doorScript;
     GameObject hiddenDoor;
-
-    public LocalTrigger triggerScript;
-    [SerializeField] GameObject trigger;
-
-    
-
 
     Animator winAnimation;
     public Animator loseAnimation;
@@ -69,12 +60,11 @@ public class GameManager : MonoBehaviour
         winAnimation = menuWin.GetComponent<Animator>();
         loseAnimation = menuLose.GetComponent<Animator>();
 
-        localEnemies = new List<GameObject>();
+        
 
         totalEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("EnemyAI"));
 
-        //trigger = GameObject.FindWithTag("Local Trigger");
-        //triggerScript = trigger.GetComponent<LocalTrigger>();
+        
 
         Time.timeScale = 1;
 
@@ -126,9 +116,9 @@ public class GameManager : MonoBehaviour
         menuActive = null;
     }
 
-    public void UpdateGameGoalWin()
+    public void UpdateGameGoalWin(int amount)
     {
-        totalEnemyCount = totalEnemies.Count + 4;
+        totalEnemyCount += amount;
         totalEnemyCountText.text = totalEnemyCount.ToString("F0");
 
         if (totalEnemyCount <= 0)
@@ -156,7 +146,7 @@ public class GameManager : MonoBehaviour
         if(!totalEnemies.Contains(enemy))
         {
             totalEnemies.Add(enemy);
-            UpdateGameGoalWin();
+            
         }
     }
 
@@ -165,7 +155,7 @@ public class GameManager : MonoBehaviour
         if (totalEnemies.Contains(enemy))
         {
             totalEnemies.Remove(enemy);
-            UpdateGameGoalWin();
+           
         }
     }
 
