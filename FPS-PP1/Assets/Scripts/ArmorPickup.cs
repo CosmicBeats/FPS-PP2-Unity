@@ -5,11 +5,13 @@ using UnityEngine;
 public class ArmorPickup : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
+    [SerializeField] GameObject player;
     [Range(1,2)][SerializeField] int armorType;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindWithTag("Player");
+        playerController = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame

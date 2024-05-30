@@ -6,7 +6,7 @@ public class Doors : MonoBehaviour
 {
     Vector3 doorClosedPosition;
     Vector3 doorOpenPosition;
-    List<GameObject> hiddenDoors = new List<GameObject>();
+    List<GameObject> hiddenDoors;
 
     //door audio
     //[SerializeField] AudioSource aud;
@@ -17,9 +17,13 @@ public class Doors : MonoBehaviour
 
     void Start()
     {
-        hiddenDoors.Add(GameObject.FindWithTag("Hidden Door"));
+        //  totalEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("EnemyAI"));
+        //hiddenDoors.Add(GameObject.FindGameObjectsWithTag("Hidden Door"));
+        hiddenDoors = new List<GameObject>(GameObject.FindGameObjectsWithTag("Hidden Door"));
+        
         doorClosedPosition = transform.position;
         doorOpenPosition = new Vector3(transform.position.x, transform.position.y + 5f, transform.position.z);
+        Debug.Log(hiddenDoors.Count);
     }
 
    

@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] TMP_Text totalEnemyCountText;
-    
-    
+
+    [SerializeField] int level;
 
     public GameObject playerFlashDamage;
     public Image playerHPBar;
@@ -121,23 +121,32 @@ public class GameManager : MonoBehaviour
         totalEnemyCount += amount;
         totalEnemyCountText.text = totalEnemyCount.ToString("F0");
 
-        if (totalEnemyCount <= 0)
+        if (totalEnemyCount <= 0 && level == 2)
         {
             StatePause();
             menuActive = menuWin;
             winAnimation.SetTrigger("WinTrigger");
         }
-        else if(totalEnemyCount == 18)
+        else if(totalEnemyCount <= 11)
         {
             buildingOneenemies = true;
 
             if (buildingOneenemies)
             {
+                //doorScript.OpenHiddenDoor();
+            }
+        }
+        else if (totalEnemyCount == 0)
+        {
+            buildingTwoenemies = true;
+
+            if (buildingTwoenemies)
+            {
                 doorScript.OpenHiddenDoor();
             }
         }
-        
-        
+
+
     }
 
 

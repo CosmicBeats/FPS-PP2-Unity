@@ -26,6 +26,14 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
 
+    // Audio related stuff credit goes to mike.
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip[] audShoot;//enemy shooting audio
+    [Range(0, 1)][SerializeField] float audShootVol;
+
+    [SerializeField] AudioClip[] audHurt; //enemy taking damage audio
+    [Range(0, 1)][SerializeField] float audHurtVol;
+
     bool isShooting;
     bool playerInRange;
     bool destChosen;
@@ -150,6 +158,9 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
+        //Credit Mike
+        aud.PlayOneShot(audShoot[Random.Range(0, audShoot.Length)], audShootVol);
+
         isShooting = true;
         anim.SetTrigger("Shoot");
         Instantiate(bullet, shootPos.position, transform.rotation);
@@ -166,8 +177,9 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         Hp -= amount;
 
+        // Credit Mike
+        aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
 
-       
         agent.SetDestination(GameManager.instance.player.transform.position);
 
         StartCoroutine(flashRed());

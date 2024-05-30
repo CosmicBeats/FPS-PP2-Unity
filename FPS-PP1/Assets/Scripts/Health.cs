@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     bool isPlayerInRange;
     PlayerController playerController;
     Coroutine healCoroutine;
+    [SerializeField] AudioSource healSound;
 
     void Start()
     {
@@ -61,6 +62,7 @@ public class Health : MonoBehaviour
         while (true)
         {
             playerController.Heal(healPoints);
+            healSound.Play();
             yield return new WaitForSeconds(healRate);
         }
     }

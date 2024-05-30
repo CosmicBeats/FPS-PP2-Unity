@@ -619,14 +619,14 @@ MonoBehaviour:
   roamTimer: 3
   bullet: {fileID: 4846950324252070306, guid: 90b9efe1832d82245b3190975d2faff2, type: 3}
   shootRate: 0.5
-  trigger: {fileID: 0}
   aud: {fileID: 3053936055033046440}
   audShoot:
   - {fileID: 8300000, guid: b57c0116ebcc1b9409fe9551ac730b2f, type: 3}
   audShootVol: 0.2
   audHurt:
   - {fileID: 8300000, guid: 7f2e0ca468da6094d9d1d771a346ce62, type: 3}
-  audHurtVol: 0.1
+  audHurtVol: 0.2
+  trigger: {fileID: 0}
 --- !u!95 &4238660970881334663
 Animator:
   serializedVersion: 5
@@ -659,7 +659,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

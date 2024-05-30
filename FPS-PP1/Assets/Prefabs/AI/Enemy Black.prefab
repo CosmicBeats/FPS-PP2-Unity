@@ -282,7 +282,7 @@ MonoBehaviour:
   model: {fileID: 4678688901187364850}
   shootPos: {fileID: 2603303185925293029}
   headPos: {fileID: 4199374164516686332}
-  Hp: 10
+  Hp: 15
   viewAngle: 90
   faceTargetSpeed: 3
   animSpeedTrans: 5
@@ -290,14 +290,14 @@ MonoBehaviour:
   roamTimer: 3
   bullet: {fileID: 4846950324252070306, guid: 4671e4d4b4cf23248a5a65d2203689e9, type: 3}
   shootRate: 3
-  trigger: {fileID: 0}
   aud: {fileID: 8879538419304312107}
   audShoot:
   - {fileID: 8300000, guid: b57c0116ebcc1b9409fe9551ac730b2f, type: 3}
   audShootVol: 0.2
   audHurt:
   - {fileID: 8300000, guid: 7f2e0ca468da6094d9d1d771a346ce62, type: 3}
-  audHurtVol: 0
+  audHurtVol: 0.2
+  trigger: {fileID: 0}
 --- !u!95 &8247587779256041813
 Animator:
   serializedVersion: 5
@@ -330,7 +330,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

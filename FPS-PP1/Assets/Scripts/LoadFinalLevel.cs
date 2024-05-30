@@ -9,10 +9,12 @@ public class LoadFinalLevel : MonoBehaviour
     float levelLoaderCountDown;
     [SerializeField] TMP_Text countDownText;
     [SerializeField] GameObject countDownTextLabel;
-   
+    
+
 
     void Start()
     {
+        
         levelLoaderCountDown = 5;  
     }
 
@@ -28,6 +30,7 @@ public class LoadFinalLevel : MonoBehaviour
         else if(other.CompareTag("Player") && levelLoaderCountDown <= 0)
         {
             SceneManager.LoadScene("MainScene 2");
+            
             countDownTextLabel.SetActive(false);
         }
     }

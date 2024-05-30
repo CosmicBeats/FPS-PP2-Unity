@@ -887,7 +887,7 @@ GameObject:
   - component: {fileID: 2334085259829013596}
   - component: {fileID: 1123399680248582927}
   m_Layer: 0
-  m_Name: Enemy Red
+  m_Name: Enemy Green
   m_TagString: EnemyAI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -927,7 +927,7 @@ MonoBehaviour:
   model: {fileID: 8774789312268066747}
   shootPos: {fileID: 6986219289865186793}
   headPos: {fileID: 948975179037929360}
-  Hp: 15
+  Hp: 10
   viewAngle: 90
   faceTargetSpeed: 3
   animSpeedTrans: 5
@@ -935,14 +935,14 @@ MonoBehaviour:
   roamTimer: 3
   bullet: {fileID: 4846950324252070306, guid: 7ed530549965e8a4c8859301c4126066, type: 3}
   shootRate: 0.2
-  trigger: {fileID: 0}
   aud: {fileID: 7426099304709826363}
   audShoot:
   - {fileID: 8300000, guid: b57c0116ebcc1b9409fe9551ac730b2f, type: 3}
   audShootVol: 0.2
   audHurt:
   - {fileID: 8300000, guid: 7f2e0ca468da6094d9d1d771a346ce62, type: 3}
-  audHurtVol: 0
+  audHurtVol: 0.2
+  trigger: {fileID: 0}
 --- !u!95 &5509466238878562872
 Animator:
   serializedVersion: 5
@@ -975,7 +975,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
