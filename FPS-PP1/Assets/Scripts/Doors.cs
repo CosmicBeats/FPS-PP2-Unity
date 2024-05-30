@@ -9,9 +9,9 @@ public class Doors : MonoBehaviour
     List<GameObject> hiddenDoors = new List<GameObject>();
 
     //door audio
-    [SerializeField] AudioSource aud;
-    [SerializeField] AudioClip[] audOpen;
-    [Range(0, 1)][SerializeField] float audOpenVol;
+    //[SerializeField] AudioSource aud;
+    //[SerializeField] AudioClip[] audOpen;
+    //[Range(0, 1)][SerializeField] float audOpenVol;
 
 
 
@@ -30,7 +30,7 @@ public class Doors : MonoBehaviour
 
         if (transform.position != doorOpenPosition)
         {
-            aud.PlayOneShot(audOpen[Random.Range(0, audOpen.Length)], audOpenVol);
+            //aud.PlayOneShot(audOpen[Random.Range(0, audOpen.Length)], audOpenVol);
             transform.LeanMoveLocalY(3.5f, 1).setEaseInSine();
         }
     }

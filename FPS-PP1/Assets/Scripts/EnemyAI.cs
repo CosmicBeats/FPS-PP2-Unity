@@ -40,13 +40,6 @@ public class EnemyAI : MonoBehaviour, IDamage
     float angleToPlayer;
     float stoppingDisOrig;
 
-    //enemy audio
-    [SerializeField] AudioSource aud;
-    [SerializeField] AudioClip[] audShoot;//enemy shooting audio
-    [Range(0, 1)][SerializeField] float audShootVol;
-    [SerializeField] AudioClip[] audHurt; //enemy taking damage audio
-    [Range(0, 1)][SerializeField] float audHurtVol;
-
 
     // Start is called before the first frame update
     void Start()
@@ -107,7 +100,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         playerDir = GameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y + 1, playerDir.z), transform.forward);
-        //Debug.Log(angleToPlayer);
+        
         //if i want to poit at the raycast new Vector3(playerDir.x,playerDir.y + 1,playerDir.z), transform.forward
         Debug.DrawRay(headPos.position, playerDir);
 
@@ -157,9 +150,6 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        //shoot audio
-        aud.PlayOneShot(audShoot[Random.Range(0, audShoot.Length)], audShootVol);
-
         isShooting = true;
         anim.SetTrigger("Shoot");
         Instantiate(bullet, shootPos.position, transform.rotation);
@@ -174,10 +164,6 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     public void TakeDamage(int amount)
     {
-        //enemy damage audio
-        aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
-
-
         Hp -= amount;
 
 

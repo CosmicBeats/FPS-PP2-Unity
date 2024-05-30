@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour
 
     public int totalEnemyCount;
     public bool isPaused;
+
+    private bool buildingOneenemies;
+    private bool buildingTwoenemies;
    
 
     void Awake()
@@ -66,12 +69,12 @@ public class GameManager : MonoBehaviour
         winAnimation = menuWin.GetComponent<Animator>();
         loseAnimation = menuLose.GetComponent<Animator>();
 
-        localEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("EnemyAI"));
+        localEnemies = new List<GameObject>();
 
         totalEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("EnemyAI"));
 
-        trigger = GameObject.FindWithTag("Local Trigger");
-        triggerScript = trigger.GetComponent<LocalTrigger>();
+        //trigger = GameObject.FindWithTag("Local Trigger");
+        //triggerScript = trigger.GetComponent<LocalTrigger>();
 
         Time.timeScale = 1;
 
@@ -125,7 +128,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateGameGoalWin()
     {
-        totalEnemyCount = totalEnemies.Count;
+        totalEnemyCount = totalEnemies.Count + 4;
         totalEnemyCountText.text = totalEnemyCount.ToString("F0");
 
         if (totalEnemyCount <= 0)
@@ -134,10 +137,16 @@ public class GameManager : MonoBehaviour
             menuActive = menuWin;
             winAnimation.SetTrigger("WinTrigger");
         }
-        else if(totalEnemyCount <= 4)
+        else if(totalEnemyCount == 18)
         {
-            doorScript.OpenHiddenDoor();
+            buildingOneenemies = true;
+
+            if (buildingOneenemies)
+            {
+                doorScript.OpenHiddenDoor();
+            }
         }
+        
         
     }
 
