@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 40c19db7e9b6a5e44a1ad5cf40022d6e
+<<<<<<<< Updated upstream:FPS-PP1/Assets/Prefabs/AI/Enemy - Blue.prefab.meta
+guid: 4fa7aae6b14f3294a9df6f6e0819735a
+========
+guid: 6c976a4bd35e3594da6a8065498e3673
+>>>>>>>> Stashed changes:FPS-PP1/Assets/Prefabs/AI/Big Enemy.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
