@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Gun - Heavy
   m_EditorClassIdentifier: 
   gunModel: {fileID: 5539744689771151918, guid: 81780990191a7d84fb0126ca087b6d7c, type: 3}
-  shootDamage: 2
+  shootDamage: 1
   shootDistance: 25
   shootRate: 0.3
-  currentAmmo: 38
+  currentAmmo: 35
   maxAmmo: 45
   reloadTime: 1.5
   isReloading: 0

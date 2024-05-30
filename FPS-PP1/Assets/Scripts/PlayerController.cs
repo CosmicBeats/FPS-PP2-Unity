@@ -39,7 +39,25 @@ public class PlayerController : MonoBehaviour ,IDamage
     int jumpCount;
     public int currentHP;
     bool isShooting;
-   
+
+    //audio
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip[] audJump;
+    [Range(0,1)] [SerializeField] float audJumpVol;
+
+    
+    [SerializeField] AudioClip[] audDmg;
+    [Range(0, 1)][SerializeField] float audDmgVol;
+
+    [SerializeField] AudioClip[] audStep;
+    [Range(0, 1)][SerializeField] float audStepVol;
+
+    [Range(2, 4)][SerializeField] int audSprintSpeed;
+
+    bool playingSteps;
+    bool isSprinting;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -89,6 +107,8 @@ public class PlayerController : MonoBehaviour ,IDamage
 
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
+            //jump audio
+            aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
             jumpCount++;
             playerVelocity.y = jumpSpeed;
         }
@@ -96,19 +116,53 @@ public class PlayerController : MonoBehaviour ,IDamage
 
         controller.Move(playerVelocity * Time.deltaTime);
 
+        //footstep audio
+        if(controller.isGrounded && moveDir.normalized.magnitude > 0.3f && !playingSteps) 
+        {
+            StartCoroutine(playSteps());
+        }
+
     }
     void Sprint()
     {
         if (Input.GetButtonDown("Sprint"))
         {
             speed *= sprintMod;
+            isSprinting = true; 
         }
         else if (Input.GetButtonUp("Sprint"))
         {
             speed /= sprintMod;
+            isSprinting = false;
         }
 
     }
+
+    IEnumerator playSteps() 
+    {
+        playingSteps = true;
+
+        aud.PlayOneShot(audStep[Random.Range(0, audStep.Length)], audStepVol);
+
+        if (!isSprinting)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        else 
+        {
+            yield return new WaitForSeconds(0.3f);
+        }
+
+        
+
+        playingSteps = false;
+    }
+        
+
+
+
+
+
     IEnumerator Shoot()
     {
         isShooting = true;
@@ -153,7 +207,9 @@ public class PlayerController : MonoBehaviour ,IDamage
 
     public void TakeDamage(int amount)
     {
-        if(currentArmor > 0)
+        aud.PlayOneShot(audDmg[Random.Range(0, audDmg.Length)], audDmgVol);
+
+        if (currentArmor > 0)
         {
 
             currentHP -= amount/2;

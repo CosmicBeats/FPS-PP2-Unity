@@ -3,38 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - EnemyAI
-  - Hidden Door
-  - PW - Nature
-  - PW - Prop
-  - Local Trigger
-<<<<<<< Updated upstream
-  - Keycard
-  - Keypad
-=======
-<<<<<<< Updated upstream
-  - Keycard
-  - Keypad
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-  - Player Spawn Pos
-=======
-  - Keycard
-  - Keypad
->>>>>>> cc7428e739106e40f72d12ac053d82873f8a3d66
-=======
-  - Keycard
-  - Keypad
->>>>>>> cc7428e739106e40f72d12ac053d82873f8a3d66
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - EnemyCollider
+  - 
   - Water
   - UI
   - 
