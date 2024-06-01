@@ -12,10 +12,13 @@ public class Spawner : MonoBehaviour
     int spawnCount;
     bool isSpawning;
     bool startSpawning;
-        // Start is called before the first frame update
+
+  
+    // Start is called before the first frame update
     void Start()
     {
         GameManager.instance.UpdateGameGoalWin(numberToSpawn);
+
     }
 
     // Update is called once per frame
@@ -31,6 +34,7 @@ public class Spawner : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            
             startSpawning = true;
         }
     }
@@ -39,14 +43,22 @@ public class Spawner : MonoBehaviour
     {
         isSpawning = true;
 
-        int arrayPosition = Random.Range(0, spawnPos.Length);
+        foreach(Transform position in spawnPos)
+        {
+            if(spawnCount >= numberToSpawn)
+            {
+                break;
+            }
+            int enemyIndex = Random.Range(0, enemyToSpawn.Length);
+            Instantiate(enemyToSpawn[enemyIndex], position.position, position.rotation);
+            spawnCount++;
 
-        int enemyIndex = Random.Range(0, enemyToSpawn.Length);
+            yield return new WaitForSeconds(spawnTimer);
+        }
 
-        Instantiate(enemyToSpawn[enemyIndex], spawnPos[arrayPosition].position, spawnPos[arrayPosition].rotation);
-        spawnCount++;
+        
 
-        yield return new WaitForSeconds(spawnTimer);
+       
         isSpawning = false;
     }
 }

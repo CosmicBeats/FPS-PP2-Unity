@@ -28,10 +28,10 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     
     public GameObject checkpointPopup;
-    
 
-    private List<GameObject> totalEnemies;
-    
+
+   
+
 
     Doors doorScript;
     GameObject hiddenDoor;
@@ -42,8 +42,7 @@ public class GameManager : MonoBehaviour
     public int totalEnemyCount;
     public bool isPaused;
 
-    private bool buildingOneenemies;
-    private bool buildingTwoenemies;
+ 
    
 
     void Awake()
@@ -60,10 +59,7 @@ public class GameManager : MonoBehaviour
         winAnimation = menuWin.GetComponent<Animator>();
         loseAnimation = menuLose.GetComponent<Animator>();
 
-        
-
-        totalEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("EnemyAI"));
-
+       
         
 
         Time.timeScale = 1;
@@ -74,9 +70,8 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
 
-        
 
-       
+      
     }
 
     void Update()
@@ -94,6 +89,7 @@ public class GameManager : MonoBehaviour
                 StateUnPause();
             }
         }
+
         
     }
 
@@ -120,57 +116,24 @@ public class GameManager : MonoBehaviour
     {
         totalEnemyCount += amount;
         totalEnemyCountText.text = totalEnemyCount.ToString("F0");
-
+        
         if (totalEnemyCount <= 0 && level == 2)
         {
             StatePause();
             menuActive = menuWin;
             winAnimation.SetTrigger("WinTrigger");
         }
-        else if(totalEnemyCount <= 11)
+        if(totalEnemyCount <= 10)
         {
-            buildingOneenemies = true;
-
-            if (buildingOneenemies)
-            {
-                //doorScript.OpenHiddenDoor();
-            }
-        }
-        else if (totalEnemyCount == 0)
-        {
-            buildingTwoenemies = true;
-
-            if (buildingTwoenemies)
-            {
-                doorScript.OpenHiddenDoor();
-            }
-        }
-
-
-    }
-
-
-    public void AddEnemy(GameObject enemy)
-    {
-        if(!totalEnemies.Contains(enemy))
-        {
-            totalEnemies.Add(enemy);
+            doorScript.OpenHiddenDoor();
             
         }
-    }
-
-    public void RemoveEnemy(GameObject enemy)
-    {
-        if (totalEnemies.Contains(enemy))
+        if (totalEnemyCount <= 0)
         {
-            totalEnemies.Remove(enemy);
-           
+            doorScript.OpenHiddenDoor();  
         }
-    }
 
-    public void EnemyDefeated(GameObject enemy)
-    {
-        RemoveEnemy(enemy);
+
     }
 
     public void StateLose()

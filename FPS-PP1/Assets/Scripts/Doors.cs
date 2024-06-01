@@ -17,13 +17,12 @@ public class Doors : MonoBehaviour
 
     void Start()
     {
-        //  totalEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("EnemyAI"));
-        //hiddenDoors.Add(GameObject.FindGameObjectsWithTag("Hidden Door"));
+       
         hiddenDoors = new List<GameObject>(GameObject.FindGameObjectsWithTag("Hidden Door"));
         
         doorClosedPosition = transform.position;
         doorOpenPosition = new Vector3(transform.position.x, transform.position.y + 5f, transform.position.z);
-        Debug.Log(hiddenDoors.Count);
+        
     }
 
    
@@ -34,7 +33,7 @@ public class Doors : MonoBehaviour
 
         if (transform.position != doorOpenPosition)
         {
-            //aud.PlayOneShot(audOpen[Random.Range(0, audOpen.Length)], audOpenVol);
+            
             transform.LeanMoveLocalY(3.5f, 1).setEaseInSine();
         }
     }

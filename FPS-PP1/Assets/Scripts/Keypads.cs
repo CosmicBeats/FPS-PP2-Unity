@@ -31,6 +31,7 @@ public class KeypadBehaviour : MonoBehaviour
             if (HasRequiredKey(requiredKey))
             {
                 door.OpenDoor();
+                
                 imageColor.color = Color.green;
                 audioClick.Play();
                 accessGranted.PlayDelayed(0.5f);

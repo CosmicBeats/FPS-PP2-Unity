@@ -11,8 +11,8 @@ public class EnemyAI : MonoBehaviour, IDamage
 {
     //just make the enemy work
     [SerializeField] Animator anim;
-     [SerializeField] NavMeshAgent agent;
-     [SerializeField] Renderer model;
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] Renderer model;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
 
@@ -28,6 +28,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     // Audio related stuff credit goes to mike.
     [SerializeField] AudioSource aud;
+    
     [SerializeField] AudioClip[] audShoot;//enemy shooting audio
     [Range(0, 1)][SerializeField] float audShootVol;
 
@@ -37,6 +38,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     bool isShooting;
     bool playerInRange;
     bool destChosen;
+
+       
 
     Color temp;
     Vector3 playerDir;
@@ -54,7 +57,6 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         
         
-        GameManager.instance.AddEnemy(gameObject);
         temp = model.material.color;
         startingPos = transform.position;
         stoppingDisOrig = agent.stoppingDistance;
@@ -185,8 +187,9 @@ public class EnemyAI : MonoBehaviour, IDamage
         StartCoroutine(flashRed());
         if (Hp <= 0)
         {
+            
             GameManager.instance.UpdateGameGoalWin(-1);
-            GameManager.instance.RemoveEnemy(gameObject);
+            
             Destroy(gameObject);
         }
     }

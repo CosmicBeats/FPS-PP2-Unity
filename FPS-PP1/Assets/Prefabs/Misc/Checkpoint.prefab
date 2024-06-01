@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 761576825787531713}
-  - component: {fileID: 4241228959812465043}
+  - component: {fileID: 8680652644222464411}
   - component: {fileID: 2305413686290022911}
   m_Layer: 0
   m_Name: Checkpoint
@@ -27,14 +27,14 @@ Transform:
   m_GameObject: {fileID: 582943587323381796}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 176.99, y: 0.82, z: 251.81152}
+  m_LocalPosition: {x: 130, y: 0.96499664, z: 237.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2510418239132703306}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4241228959812465043
+--- !u!114 &8680652644222464411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,10 +43,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 582943587323381796}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc286507110ff194382ddcc8c145cb42, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dbe748524a285944b6726899c486f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 0}
+  model: {fileID: 8361750619602799587}
 --- !u!65 &2305413686290022911
 BoxCollider:
   m_ObjectHideFlags: 0
