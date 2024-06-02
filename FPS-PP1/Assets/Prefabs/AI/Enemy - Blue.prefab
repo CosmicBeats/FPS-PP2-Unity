@@ -608,7 +608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 4238660970881334663}
   agent: {fileID: 8106671560884250823}
-  model: {fileID: 4369628971146747821}
+  model: {fileID: 13700000, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
   shootPos: {fileID: 4456562522029677474}
   headPos: {fileID: 4283230826162810397}
   Hp: 10

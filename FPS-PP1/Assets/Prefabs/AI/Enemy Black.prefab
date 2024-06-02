@@ -279,7 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 8247587779256041813}
   agent: {fileID: 6680960870269295145}
-  model: {fileID: 4678688901187364850}
+  model: {fileID: 13700000, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
   shootPos: {fileID: 2603303185925293029}
   headPos: {fileID: 4199374164516686332}
   Hp: 15

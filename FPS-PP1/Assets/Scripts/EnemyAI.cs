@@ -13,6 +13,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] Animator anim;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Renderer model;
+    [SerializeField] Renderer[] robotSoldierModelParts;
+
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
 
@@ -42,6 +44,7 @@ public class EnemyAI : MonoBehaviour, IDamage
        
 
     Color temp;
+    Color tempRobot;
     Vector3 playerDir;
     Vector3 startingPos;
 
@@ -55,9 +58,12 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
-        
-        
-        temp = model.material.color;
+        foreach (var robotPart in robotSoldierModelParts)
+        {
+            tempRobot = robotPart.sharedMaterial.color;
+        }
+        //temp = model.material.color;
+
         startingPos = transform.position;
         stoppingDisOrig = agent.stoppingDistance;
     }
@@ -69,10 +75,10 @@ public class EnemyAI : MonoBehaviour, IDamage
         //agent.SetDestination(GameManager.instance.player.transform.position);
         //UNCOMMIT for can see player
           float animSpeed = agent.velocity.normalized.magnitude;
-           anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
+          anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
         
-                if (playerInRange && canSeePlayer())
-                {
+        if (playerInRange && canSeePlayer())
+        {
             //agent.SetDestination(GameManager.instance.player.transform.position);
              if (!isShooting)
              {
@@ -80,7 +86,7 @@ public class EnemyAI : MonoBehaviour, IDamage
              }
             StartCoroutine(roam());
                    
-                }
+        }
         else if (!playerInRange)
         {
             StartCoroutine(roam());
@@ -196,10 +202,21 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     IEnumerator flashRed()
     {
-
-        model.material.color = Color.red;
+        foreach (var robotPart in robotSoldierModelParts)
+        {
+            robotPart.sharedMaterial.color = Color.red;
+        }
         yield return new WaitForSeconds(0.1f);
-        model.material.color = temp;
+        foreach (var robotPart in robotSoldierModelParts)
+        {
+            robotPart.sharedMaterial.color = tempRobot;
+        }
+
+        //model.material.color = Color.red;
+        //yield return new WaitForSeconds(0.1f);
+        //model.material.color = temp;
+
+
     }
 }
 

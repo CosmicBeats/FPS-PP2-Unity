@@ -923,7 +923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 5509466238878562872}
   agent: {fileID: 1469968705790477553}
-  model: {fileID: 8774789312268066747}
+  model: {fileID: 13700000, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
   shootPos: {fileID: 6986219289865186793}
   headPos: {fileID: 948975179037929360}
   Hp: 10
@@ -935,7 +935,6 @@ MonoBehaviour:
   bullet: {fileID: 4846950324252070306, guid: 7ed530549965e8a4c8859301c4126066, type: 3}
   shootRate: 0.2
   aud: {fileID: 7426099304709826363}
-  audioToDelay: {fileID: 0}
   audShoot:
   - {fileID: 8300000, guid: b57c0116ebcc1b9409fe9551ac730b2f, type: 3}
   audShootVol: 0.2
