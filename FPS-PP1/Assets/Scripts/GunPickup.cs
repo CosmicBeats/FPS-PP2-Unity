@@ -15,10 +15,8 @@ public class GunPickup : MonoBehaviour
         gun.currentAmmo = gun.maxAmmo;
     }
 
-    private void OnTriggerEnter(Collider other)
     private void Update()
     {
-        if (other.CompareTag("Player"))
         if (IsPlayerinRange && Input.GetButtonDown("Interact"))
         {
             GameManager.instance.playerScript.GetGunStats(gun);

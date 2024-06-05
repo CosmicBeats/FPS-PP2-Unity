@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
 
     public int totalEnemyCount;
     public bool isPaused;
+    public List<GameObject> totalEnemiesInScene;
+    public Transform[] startingSpawnPosition;
 
  
    
@@ -64,7 +66,8 @@ public class GameManager : MonoBehaviour
         loseAnimation = menuLose.GetComponent<Animator>();
 
        
-        
+        totalEnemiesInScene = new List<GameObject>();
+        totalEnemiesInScene.Add(GameObject.FindWithTag("EnemyAI"));
 
         Time.timeScale = 1;
 
@@ -145,6 +148,8 @@ public class GameManager : MonoBehaviour
         StatePause();
         menuActive = menuLose;
     }
+
+
    
     
 }
