@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public TMP_Text CurrentAmmoText;
     public TMP_Text MaxAmmoText;
+    public TMP_Text ItemInfoText;
+    public GameObject ItemInfoDisplay;
     
     public GameObject checkpointPopup;
 
