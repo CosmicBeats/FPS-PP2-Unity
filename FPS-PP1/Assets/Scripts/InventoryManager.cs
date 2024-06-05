@@ -8,7 +8,7 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
   
-    public List<Keys> allKeys = new List<Keys>();
+    public List<GameObject> allKeys = new List<GameObject>();
 
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class InventoryManager : MonoBehaviour
 
 
 
-    public void AddKey(Keys key)
+    public void AddKey(GameObject key)
     {
         if (!allKeys.Contains(key))
         {
@@ -26,7 +26,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void RemoveKey(Keys key)
+    public void RemoveKey(GameObject key)
     {
         if (allKeys.Contains(key))
         {
@@ -34,13 +34,4 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public enum Keys
-    {
-        //Add more keys later
-        firstBuildingKey,
-        secondBuildingKey,
-        thirdBuildingKey,
-    }
-
-    
 }

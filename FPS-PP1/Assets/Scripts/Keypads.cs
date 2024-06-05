@@ -7,7 +7,8 @@ using TMPro;
 public class KeypadBehaviour : MonoBehaviour
 {
     [SerializeField] Doors door;
-    [SerializeField] InventoryManager.Keys requiredKey;
+    [SerializeField] GameObject requiredKey;
+    [SerializeField] bool isStartingDoor;
     [SerializeField] GameObject keypadCanvas;
     [SerializeField] TMP_Text keypadText;
     [SerializeField] AudioSource accessGranted, accessDenied, audioClick;
@@ -32,6 +33,15 @@ public class KeypadBehaviour : MonoBehaviour
             {
                 door.OpenDoor();
                 
+                imageColor.color = Color.green;
+                audioClick.Play();
+                accessGranted.PlayDelayed(0.5f);
+                keypadText.text = "Granted";
+            }
+            else if(isStartingDoor)
+            {
+                door.OpenDoor();
+
                 imageColor.color = Color.green;
                 audioClick.Play();
                 accessGranted.PlayDelayed(0.5f);
@@ -62,7 +72,7 @@ public class KeypadBehaviour : MonoBehaviour
             playerInRange = false;
         }
     }
-    public bool HasRequiredKey(InventoryManager.Keys keyRequired)
+    public bool HasRequiredKey(GameObject keyRequired)
     {
         if (InventoryManager.instance.allKeys.Contains(keyRequired))
         {

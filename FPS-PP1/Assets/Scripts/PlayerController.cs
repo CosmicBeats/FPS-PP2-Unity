@@ -171,6 +171,8 @@ public class PlayerController : MonoBehaviour ,IDamage
 
         gunList[selectedGun].currentAmmo--;
 
+        GameManager.instance.CurrentAmmoText.text = gunList[selectedGun].currentAmmo.ToString("F0");
+        GameManager.instance.MaxAmmoText.text = gunList[selectedGun].maxAmmo.ToString("F0");
 
         gunParticle.Play();
 
@@ -325,6 +327,8 @@ public class PlayerController : MonoBehaviour ,IDamage
 
             gunModel.GetComponent<MeshFilter>().sharedMesh = currentGun.gunModel.GetComponent<MeshFilter>().sharedMesh;
             gunModel.GetComponent<MeshRenderer>().sharedMaterial = currentGun.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+            GameManager.instance.CurrentAmmoText.text = gunList[selectedGun].currentAmmo.ToString("F0");
+            GameManager.instance.MaxAmmoText.text = gunList[selectedGun].maxAmmo.ToString("F0");
         }
     }
 
@@ -346,6 +350,7 @@ public class PlayerController : MonoBehaviour ,IDamage
 
             gunList[selectedGun].currentAmmo = gunList[selectedGun].maxAmmo;
 
+            GameManager.instance.CurrentAmmoText.text = gunList[selectedGun].maxAmmo.ToString("F0");
 
         }
     }

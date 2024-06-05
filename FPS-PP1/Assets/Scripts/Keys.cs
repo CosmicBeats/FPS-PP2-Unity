@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Keys : MonoBehaviour
 {
-    [SerializeField] InventoryManager.Keys keyType;
+    [SerializeField] GameObject keyType;
 
     bool isPlayerInRange;
 

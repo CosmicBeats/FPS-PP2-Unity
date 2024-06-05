@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(startSpawning &&  !isSpawning && spawnCount < numberToSpawn)
+        if(startSpawning && !isSpawning && spawnCount < numberToSpawn)
         {
             StartCoroutine(Spawn());
         }
