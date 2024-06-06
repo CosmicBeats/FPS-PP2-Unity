@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     public int totalEnemyCount;
     public bool isPaused;
     public List<GameObject> totalEnemiesInScene;
-    public Transform[] startingSpawnPosition;
+    
 
  
    
@@ -132,12 +132,12 @@ public class GameManager : MonoBehaviour
         }
         if(totalEnemyCount <= 10)
         {
-            doorScript.OpenHiddenDoor();
+            //doorScript.OpenHiddenDoor();
             
         }
         if (totalEnemyCount <= 0)
         {
-            doorScript.OpenHiddenDoor();  
+            //doorScript.OpenHiddenDoor();  
         }
 
 

@@ -40,11 +40,10 @@ public class Doors : MonoBehaviour
 
     public void OpenHiddenDoor()
     {
-        if(hiddenDoors.Count > 0)
-        {
-            Destroy(hiddenDoors[0]);
-            hiddenDoors.RemoveAt(0);
-        }
+        
+        Destroy(hiddenDoors[0]);
+        hiddenDoors.RemoveAt(0);
+        
         
     }
 }

@@ -27,6 +27,9 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
+    [SerializeField] bool doesDropKey;
+    [SerializeField] GameObject keyToDrop;
+
 
     // Audio related stuff credit goes to mike.
     [SerializeField] AudioSource aud;
@@ -193,7 +196,10 @@ public class EnemyAI : MonoBehaviour, IDamage
         StartCoroutine(flashRed());
         if (Hp <= 0)
         {
-            
+            if(doesDropKey)
+            {
+                Instantiate(keyToDrop);
+            }
             GameManager.instance.UpdateGameGoalWin(-1);
             
             Destroy(gameObject);
