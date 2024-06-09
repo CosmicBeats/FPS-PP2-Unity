@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     //just make the enemy work
     [SerializeField] Animator anim;
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] Renderer model;
+    //[SerializeField] Renderer model;
     [SerializeField] Renderer[] robotSoldierModelParts;
 
     [SerializeField] Transform shootPos;
@@ -46,7 +46,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
        
 
-    Color temp;
+    //Color temp;
     Color tempRobot;
     Vector3 playerDir;
     Vector3 startingPos;
@@ -61,10 +61,10 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
-        foreach (var robotPart in robotSoldierModelParts)
-        {
-            tempRobot = robotPart.sharedMaterial.color;
-        }
+        //foreach (var robotPart in robotSoldierModelParts)
+        //{
+        //    tempRobot = robotPart.material.color;
+        //}
         //temp = model.material.color;
 
         startingPos = transform.position;
@@ -193,12 +193,12 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         agent.SetDestination(GameManager.instance.player.transform.position);
 
-        StartCoroutine(flashRed());
+        //StartCoroutine(flashRed());
         if (Hp <= 0)
         {
             if(doesDropKey)
             {
-                Instantiate(keyToDrop);
+                Instantiate(keyToDrop, transform.position, Quaternion.identity);
             }
             GameManager.instance.UpdateGameGoalWin(-1);
             
@@ -208,15 +208,15 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     IEnumerator flashRed()
     {
-        foreach (var robotPart in robotSoldierModelParts)
-        {
-            robotPart.sharedMaterial.color = Color.red;
-        }
+        //foreach (var robotPart in robotSoldierModelParts)
+        //{
+        //    robotPart.material.color = Color.red;
+        //}
         yield return new WaitForSeconds(0.1f);
-        foreach (var robotPart in robotSoldierModelParts)
-        {
-            robotPart.sharedMaterial.color = tempRobot;
-        }
+        //foreach (var robotPart in robotSoldierModelParts)
+        //{
+        //    robotPart.material.color = tempRobot;
+        //}
 
         //model.material.color = Color.red;
         //yield return new WaitForSeconds(0.1f);

@@ -7,18 +7,15 @@ using static InventoryManager;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
-  
-    public List<GameObject> allKeys = new List<GameObject>();
+
+    public List<Keys> allKeys = new List<Keys>();
 
     private void Awake()
     {
-
         instance = this;
     }
 
-
-
-    public void AddKey(GameObject key)
+    public void AddKey(Keys key)
     {
         if (!allKeys.Contains(key))
         {
@@ -26,12 +23,20 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void RemoveKey(GameObject key)
+    public void RemoveKey(Keys key)
     {
         if (allKeys.Contains(key))
         {
             allKeys.Remove(key);
         }
+    }
+
+    public enum Keys
+    {
+        //Add more keys later
+        firstBuildingKey,
+        secondBuildingKey,
+        thirdBuildingKey,
     }
 
 }

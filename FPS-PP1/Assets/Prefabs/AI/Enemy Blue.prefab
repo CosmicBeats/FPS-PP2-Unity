@@ -571,7 +571,7 @@ GameObject:
   - component: {fileID: 5554235541322684963}
   - component: {fileID: 7088850654514964167}
   m_Layer: 0
-  m_Name: Enemy - Blue
+  m_Name: Enemy Blue
   m_TagString: EnemyAI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -609,6 +609,7 @@ MonoBehaviour:
   anim: {fileID: 4238660970881334663}
   agent: {fileID: 8106671560884250823}
   model: {fileID: 13700000, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
+  robotSoldierModelParts: []
   shootPos: {fileID: 4456562522029677474}
   headPos: {fileID: 4283230826162810397}
   Hp: 10
@@ -619,6 +620,8 @@ MonoBehaviour:
   roamTimer: 3
   bullet: {fileID: 4846950324252070306, guid: 90b9efe1832d82245b3190975d2faff2, type: 3}
   shootRate: 0.5
+  doesDropKey: 0
+  keyToDrop: {fileID: 0}
   aud: {fileID: 3053936055033046440}
   audShoot:
   - {fileID: 8300000, guid: b57c0116ebcc1b9409fe9551ac730b2f, type: 3}
