@@ -10,8 +10,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    
-
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
@@ -33,10 +31,6 @@ public class GameManager : MonoBehaviour
     
     public GameObject checkpointPopup;
 
-
-   
-
-
     Doors doorScript;
     GameObject hiddenDoor;
 
@@ -47,10 +41,6 @@ public class GameManager : MonoBehaviour
     public bool isPaused;
     public List<GameObject> totalEnemiesInScene;
     
-
- 
-   
-
     void Awake()
     {
         if (instance == null)
@@ -77,8 +67,6 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
 
-
-      
     }
 
     void Update()
@@ -96,8 +84,6 @@ public class GameManager : MonoBehaviour
                 StateUnPause();
             }
         }
-
-        
     }
 
     public void StatePause()
@@ -106,7 +92,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
-        
     }
 
     public void StateUnPause()
@@ -130,17 +115,15 @@ public class GameManager : MonoBehaviour
             menuActive = menuWin;
             winAnimation.SetTrigger("WinTrigger");
         }
-        if(totalEnemyCount <= 10)
+        if(totalEnemyCount <= 20)
         {
-            //doorScript.OpenHiddenDoor();
+            doorScript.OpenHiddenDoor();
             
         }
         if (totalEnemyCount <= 0)
         {
-            //doorScript.OpenHiddenDoor();  
+            doorScript.OpenHiddenDoor();  
         }
-
-
     }
 
     public void StateLose()

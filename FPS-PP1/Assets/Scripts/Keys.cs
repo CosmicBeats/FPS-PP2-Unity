@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Keys : MonoBehaviour
 {
-    
+    [SerializeField] InventoryManager.Keys keyType;
 
     bool isPlayerInRange;
 
@@ -12,7 +12,7 @@ public class Keys : MonoBehaviour
     {
         if(isPlayerInRange && Input.GetButtonDown("Interact"))
         {
-            InventoryManager.instance.AddKey(gameObject);
+            InventoryManager.instance.AddKey(keyType);
             Destroy(gameObject);
         }
     }
@@ -30,5 +30,13 @@ public class Keys : MonoBehaviour
         {
             isPlayerInRange = false;
         }
+    }
+
+    public enum KeyType
+    {
+        firstBuildingKey,
+        secondBuildingKey,
+        thirdBuildingKey,
+       
     }
 }

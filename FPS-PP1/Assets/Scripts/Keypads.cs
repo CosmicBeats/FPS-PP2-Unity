@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static Keys;
 
 public class KeypadBehaviour : MonoBehaviour
 {
     [SerializeField] Doors door;
-    [SerializeField] GameObject requiredKey;
+    [SerializeField] InventoryManager.Keys requiredKey;
     [SerializeField] bool isStartingDoor;
     [SerializeField] GameObject keypadCanvas;
     [SerializeField] TMP_Text keypadText;
@@ -72,7 +73,7 @@ public class KeypadBehaviour : MonoBehaviour
             playerInRange = false;
         }
     }
-    public bool HasRequiredKey(GameObject keyRequired)
+    public bool HasRequiredKey(InventoryManager.Keys keyRequired)
     {
         if (InventoryManager.instance.allKeys.Contains(keyRequired))
         {
