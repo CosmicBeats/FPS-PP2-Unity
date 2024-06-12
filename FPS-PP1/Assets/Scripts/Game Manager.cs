@@ -68,6 +68,8 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
 
+        
+
     }
 
     void Update()

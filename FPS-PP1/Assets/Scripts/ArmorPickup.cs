@@ -30,10 +30,14 @@ public class ArmorPickup : MonoBehaviour
                 }
                 if(armorType == 2)
                 {
-                    playerController.currentArmor = playerController.MaxArmor/2;
+                    playerController.currentArmor += playerController.MaxArmor/2;
                     Destroy(gameObject);
                     playerController.updatePlayerUI();
                 }
+            }
+            if(playerController.currentArmor > playerController.MaxArmor)
+            {
+                playerController.currentArmor = playerController.MaxArmor;
             }
         }
     }
