@@ -13,6 +13,7 @@ public class GunPickup : MonoBehaviour
     void Start()
     {
         gun.currentAmmo = gun.maxAmmo;
+        gun.totalAmmo = gun.totalAmmoStash;
     }
 
     private void Update()

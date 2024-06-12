@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour ,IDamage
     void Update()
     {
         //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
+        
         Movement();
         SelectGun();
 
@@ -201,6 +202,7 @@ public class PlayerController : MonoBehaviour ,IDamage
             else if (gunList[selectedGun].currentAmmo <= 0 || Input.GetButtonDown("Reload"))
             {
                 StartCoroutine(Reload());
+
                 
             }
         }
@@ -329,6 +331,7 @@ public class PlayerController : MonoBehaviour ,IDamage
 
             GameManager.instance.CurrentAmmoText.text = gunList[selectedGun].currentAmmo.ToString("F0");
             GameManager.instance.MaxAmmoText.text = gunList[selectedGun].maxAmmo.ToString("F0");
+            GameManager.instance.TotalAmmoText.text = gunList[selectedGun].totalAmmo.ToString("F0");
         }
     }
 
@@ -348,10 +351,23 @@ public class PlayerController : MonoBehaviour ,IDamage
             gunAnimator.SetBool("Reloading", false);
             yield return new WaitForSeconds(.25f);
 
+            if (gunList[selectedGun].currentAmmo > 0)
+            {
+                gunList[selectedGun].totalAmmo = gunList[selectedGun].totalAmmo - (gunList[selectedGun].maxAmmo - gunList[selectedGun].currentAmmo);
+                GameManager.instance.TotalAmmoText.text = gunList[selectedGun].totalAmmo.ToString("F0");
+            }
+            else if (gunList[selectedGun].currentAmmo <=0)
+            {
+                gunList[selectedGun].totalAmmo -= gunList[selectedGun].maxAmmo;
+                GameManager.instance.TotalAmmoText.text = gunList[selectedGun].totalAmmo.ToString("F0");
+            }
+
             gunList[selectedGun].currentAmmo = gunList[selectedGun].maxAmmo;
 
             GameManager.instance.CurrentAmmoText.text = gunList[selectedGun].maxAmmo.ToString("F0");
-           
+
+            
+
 
         }
     }

@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Bson;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,12 @@ public class GunStats : ScriptableObject
     public ParticleSystem gunParticle; 
     public AudioClip shootSound; 
     [Range(0, 1)] public float shootVolume;
-    public Image icon; 
+    public Image icon;
+
+    public int totalAmmo;
+
+    public int totalAmmoStash;
+    
 
 
 }
