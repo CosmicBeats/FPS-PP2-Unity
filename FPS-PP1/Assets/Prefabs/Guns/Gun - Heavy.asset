@@ -16,7 +16,7 @@ MonoBehaviour:
   shootDamage: 1
   shootDistance: 25
   shootRate: 0.3
-  currentAmmo: 35
+  currentAmmo: 45
   maxAmmo: 45
   reloadTime: 1.5
   isReloading: 0
@@ -25,3 +25,5 @@ MonoBehaviour:
   shootSound: {fileID: 8300000, guid: 947719fd38845824ba3638af9d8e4e54, type: 3}
   shootVolume: 0
   icon: {fileID: 0}
+  totalAmmo: 0
+  totalAmmoStash: 405

@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public TMP_Text CurrentAmmoText;
     public TMP_Text MaxAmmoText;
+    public TMP_Text TotalAmmoText;
     public TMP_Text ItemInfoText;
     public GameObject ItemInfoDisplay;
     
@@ -61,11 +62,13 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 1;
 
-        hiddenDoor = GameObject.FindWithTag("Hidden Door");
-        doorScript = hiddenDoor.GetComponent<Doors>();
+        //hiddenDoor = GameObject.FindWithTag("Hidden Door");
+        //doorScript = hiddenDoor.GetComponent<Doors>();
 
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
+
+        
 
     }
 
