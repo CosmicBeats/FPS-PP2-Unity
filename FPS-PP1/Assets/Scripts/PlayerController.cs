@@ -30,12 +30,12 @@ public class PlayerController : MonoBehaviour ,IDamage
 
 
 
-    [SerializeField] List<GunStats> gunList = new List<GunStats>();
+    public List<GunStats> gunList = new List<GunStats>();
 
     public int currentArmor;
     Vector3 moveDir;
     Vector3 playerVelocity;
-    int selectedGun;
+    public int selectedGun;
     int jumpCount;
     public int currentHP;
     bool isShooting;
@@ -158,11 +158,6 @@ public class PlayerController : MonoBehaviour ,IDamage
 
         playingSteps = false;
     }
-        
-
-
-
-
 
     IEnumerator Shoot()
     {

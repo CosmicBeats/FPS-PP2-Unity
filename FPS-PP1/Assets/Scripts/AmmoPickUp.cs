@@ -23,27 +23,34 @@ public class AmmoPickUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (playerController.gunStats.totalAmmo < playerController.gunStats.totalAmmoStash)
+            
+
+
+            if (playerController.gunList[playerController.selectedGun].totalAmmo < playerController.gunList[playerController.selectedGun].totalAmmoStash)
             {
                 if (ammoType == 1)
                 {
-                    playerController.gunStats.totalAmmo = playerController.gunStats.totalAmmoStash;
+                    playerController.gunList[playerController.selectedGun].totalAmmo = playerController.gunList[playerController.selectedGun].totalAmmoStash;
 
                     Destroy(gameObject);
-                    
+                    GameManager.instance.TotalAmmoText.text = playerController.gunList[playerController.selectedGun].totalAmmo.ToString("F0");
+
                 }
                 if (ammoType == 2)
                 {
-                    playerController.gunStats.totalAmmo += playerController.gunStats.totalAmmoStash/2;
+                    playerController.gunList[playerController.selectedGun].totalAmmo += playerController.gunList[playerController.selectedGun].totalAmmoStash /2;
 
                     Destroy(gameObject);
-                    
+                    GameManager.instance.TotalAmmoText.text = playerController.gunList[playerController.selectedGun].totalAmmo.ToString("F0");
+
                 }
             }
 
-            if(playerController.gunStats.totalAmmo > playerController.gunStats.totalAmmoStash)
+            if(playerController.gunList[playerController.selectedGun].totalAmmo > playerController.gunList[playerController.selectedGun].totalAmmoStash)
             {
-                playerController.gunStats.totalAmmo = playerController.gunStats.totalAmmoStash;
+                playerController.gunList[playerController.selectedGun].totalAmmo = playerController.gunList[playerController.selectedGun].totalAmmoStash;
+                GameManager.instance.TotalAmmoText.text = playerController.gunList[playerController.selectedGun].totalAmmo.ToString("F0");
+
             }
         }
     }
