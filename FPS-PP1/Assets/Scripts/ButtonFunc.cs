@@ -36,4 +36,10 @@ public class ButtonFunc : MonoBehaviour
 #endif
 
     }
+
+    public void PlayGame()
+    {
+        GameManager.instance.StateUnPause();
+        
+    }
 }
