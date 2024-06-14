@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Net;
 
 
 public class GameManager : MonoBehaviour
@@ -66,6 +67,11 @@ public class GameManager : MonoBehaviour
 
         hiddenDoor = GameObject.FindWithTag("Hidden Door");
         doorScript = hiddenDoor.GetComponent<Doors>();
+        if(doorScript == null)
+        {
+            return;
+        }
+        
 
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
@@ -126,12 +132,17 @@ public class GameManager : MonoBehaviour
         }
         if(totalEnemyCount <= 20)
         {
-            doorScript.OpenHiddenDoor();
-            
+            if (doorScript != null)
+            {
+                doorScript.OpenHiddenDoor();
+            }
         }
         if (totalEnemyCount <= 0)
         {
-            doorScript.OpenHiddenDoor();  
+            if (doorScript != null)
+            {
+                doorScript.OpenHiddenDoor();
+            }
         }
     }
 
