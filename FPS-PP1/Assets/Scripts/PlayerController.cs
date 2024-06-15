@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour ,IDamage
 {
-    
+    public bool disable = false;
 
     [SerializeField] CharacterController controller;
     public int maxHP;
@@ -81,11 +81,14 @@ public class PlayerController : MonoBehaviour ,IDamage
     void Update()
     {
         //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
-        
-        Movement();
-        SelectGun();
+        //disables player control for teleport
+        if (!disable)
+        {
+            Movement();
+            SelectGun();
 
-        Reloading();
+            Reloading();
+        }
     }
     void Movement()
     {
