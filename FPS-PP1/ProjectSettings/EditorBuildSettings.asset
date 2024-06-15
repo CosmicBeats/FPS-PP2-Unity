@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Meikel Test Scene.unity
+    guid: 7081dc8f6b3bc47449f1ab71189277bf
+  - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 8bf847a0f51f89743be773a069645156
   - enabled: 1

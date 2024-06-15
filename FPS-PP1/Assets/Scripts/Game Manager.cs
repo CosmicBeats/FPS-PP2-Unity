@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text totalEnemyCountText;
 
     [SerializeField] int level;
-    [Header("Mouse Visibility")]
-    public bool MouseVis;
+    
+    public GameObject menuCredits;
     public GameObject playerFlashDamage;
     public Image playerHPBar;
     public Image playerArmorBar;
@@ -54,7 +54,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-       
+
+        menuActive = menuMain;
+        StatePause();
+        menuActive.SetActive(isPaused);
+
         winAnimation = menuWin.GetComponent<Animator>();
         loseAnimation = menuLose.GetComponent<Animator>();
 
@@ -71,9 +75,7 @@ public class GameManager : MonoBehaviour
         playerScript = player.GetComponent<PlayerController>();
 
 
-        menuActive = menuMain;
-        StatePause();
-        menuActive.SetActive(isPaused);
+        
     }
 
     void Update()
@@ -97,7 +99,6 @@ public class GameManager : MonoBehaviour
     {
         isPaused = !isPaused;
         Cursor.visible = true;
-        MouseVis = true;
         Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;
     }
@@ -107,7 +108,6 @@ public class GameManager : MonoBehaviour
         isPaused = !isPaused;
         Time.timeScale = 1;
         Cursor.visible = false;
-        MouseVis = false;
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(isPaused);
         menuActive = null;
