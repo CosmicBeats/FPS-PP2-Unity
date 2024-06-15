@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] GameObject menuActive;
-    [SerializeField] GameObject menuMain;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
@@ -55,10 +54,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        menuActive = menuMain;
-        StatePause();
-        menuActive.SetActive(isPaused);
 
         winAnimation = menuWin.GetComponent<Animator>();
         loseAnimation = menuLose.GetComponent<Animator>();
