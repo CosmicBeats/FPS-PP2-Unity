@@ -507,7 +507,10 @@ PrefabInstance:
     - {fileID: 2738008765766383990, guid: 8021c1f8a5f76db4ba9d4e0475fafb7c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 831597775590479038, guid: 8021c1f8a5f76db4ba9d4e0475fafb7c, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 677473328}
   m_SourcePrefab: {fileID: 100100000, guid: 8021c1f8a5f76db4ba9d4e0475fafb7c, type: 3}
 --- !u!1 &677473323 stripped
 GameObject:
@@ -525,6 +528,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5090b1d37f876684692c99387f5d22d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &677473328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677473323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef0e8add72c54894cb05c8c6cd97db32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerT: {fileID: 677473323}
+  distance: 10
 --- !u!4 &886660844 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4904667538222164, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
@@ -802,7 +819,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1377071110}
   agent: {fileID: 1377071115}
-  model: {fileID: 1945316489}
   robotSoldierModelParts:
   - {fileID: 1945316489}
   shootPos: {fileID: 1561075434}

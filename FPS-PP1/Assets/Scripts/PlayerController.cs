@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour ,IDamage
     void Update()
     {
         //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
+        //disables player control for teleport
         if (!disable)
         {
             Movement();
