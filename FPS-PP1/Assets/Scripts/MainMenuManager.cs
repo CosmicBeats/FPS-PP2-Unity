@@ -12,9 +12,11 @@ public class MainMenuManager : MonoBehaviour
 
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuMain;
+
    
 
     public GameObject menuCredits;
+    public GameObject menuOptions;
 
 
     // Start is called before the first frame update
