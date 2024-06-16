@@ -14,6 +14,7 @@ public class Keys : MonoBehaviour
         {
             InventoryManager.instance.AddKey(keyType);
             Destroy(gameObject);
+            GameManager.instance.ItemInfoDisplay.SetActive(false);
         }
     }
 
@@ -22,6 +23,8 @@ public class Keys : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             isPlayerInRange = true;
+            GameManager.instance.ItemInfoDisplay.SetActive(true);
+
         }
     }
     private void OnTriggerExit(Collider other)
@@ -29,6 +32,7 @@ public class Keys : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
+            GameManager.instance.ItemInfoDisplay.SetActive(false);
         }
     }
 

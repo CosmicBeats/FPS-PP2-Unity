@@ -7,6 +7,7 @@ public class PGrenade : MonoBehaviour
     [SerializeField] Rigidbody gb;
 
     [SerializeField] GameObject explosionEffect;
+
     //set a delay
     public float delay = 3f;
     [SerializeField] float Radius; 

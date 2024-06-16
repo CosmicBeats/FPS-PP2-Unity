@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonFunc : MonoBehaviour
 {
+    //PAUSE MENU
     public void resume()
     {
         GameManager.instance.StateUnPause();
@@ -28,18 +29,42 @@ public class ButtonFunc : MonoBehaviour
 
     public void quit()
     {
+        SceneManager.LoadScene(0);
+
+/*#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+    Application.Quit();
+
+#endif*/
+
+    }
+
+    //MAIN MENU
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(1);
+        
+    }
+
+    public void Credits()
+    {
+        MainMenuManager.instance.menuCredits.SetActive(true);
+    }
+
+    public void CloseCredits()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitGame()
+    {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
     Application.Quit();
 
 #endif
-
-    }
-
-    public void PlayGame()
-    {
-        GameManager.instance.StateUnPause();
-        
     }
 }

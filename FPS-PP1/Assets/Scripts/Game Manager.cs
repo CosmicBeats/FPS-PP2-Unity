@@ -12,15 +12,14 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] GameObject menuActive;
-    [SerializeField] GameObject menuMain;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] TMP_Text totalEnemyCountText;
 
     [SerializeField] int level;
-    [Header("Mouse Visibility")]
-    public bool MouseVis;
+    
+    public GameObject menuCredits;
     public GameObject playerFlashDamage;
     public Image playerHPBar;
     public Image playerArmorBar;
@@ -30,6 +29,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text CurrentAmmoText;
     public TMP_Text MaxAmmoText;
     public TMP_Text TotalAmmoText;
+    public TMP_Text GrenadeAmmoText;
     public TMP_Text ItemInfoText;
     public GameObject ItemInfoDisplay;
     
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-       
+
         winAnimation = menuWin.GetComponent<Animator>();
         loseAnimation = menuLose.GetComponent<Animator>();
 
@@ -77,9 +77,7 @@ public class GameManager : MonoBehaviour
         playerScript = player.GetComponent<PlayerController>();
 
 
-        menuActive = menuMain;
-        StatePause();
-        menuActive.SetActive(isPaused);
+        
     }
 
     void Update()
@@ -103,7 +101,6 @@ public class GameManager : MonoBehaviour
     {
         isPaused = !isPaused;
         Cursor.visible = true;
-        MouseVis = true;
         Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;
     }
@@ -113,7 +110,6 @@ public class GameManager : MonoBehaviour
         isPaused = !isPaused;
         Time.timeScale = 1;
         Cursor.visible = false;
-        MouseVis = false;
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(isPaused);
         menuActive = null;

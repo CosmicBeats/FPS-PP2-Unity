@@ -5,19 +5,38 @@ using UnityEngine;
 public class Teleport : MonoBehaviour
 {
     PlayerController playerCrontrol;
+    [SerializeField] GameObject playerT;
+
+    public float distance = 10f;
     // Start is called before the first frame update
     void Start()
     {
-        playerCrontrol = gameObject.GetComponent<PlayerController>();
+        playerCrontrol = playerT.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetButtonDown("Teleport"))
         {
             StartCoroutine(Teleporter());
         } 
+    }
+
+    public void blinkForward()
+    {
+        RaycastHit solid;
+        Vector3 destination = transform.position + transform.forward * distance;
+        if(Physics.Linecast(transform.position, destination, out solid)) 
+        {
+            destination = transform.position + transform .forward * (solid.distance -1f);
+        }
+        if(Physics.Raycast(destination, -Vector3.up, out solid))
+        {
+            destination.y = -0.5f;
+            destination = solid.point;
+            transform.position = destination;
+        }
     }
 
     IEnumerator Teleporter()
@@ -26,7 +45,8 @@ public class Teleport : MonoBehaviour
         playerCrontrol.disable = true;
         yield return new WaitForSeconds(0.5f);
         //teleports
-        gameObject.transform.position = Vector3.zero;
+        blinkForward();
+        //playerT.transform.position = Vector3.zero;
         //reactivate player controls
         yield return new WaitForSeconds(0.5f);
         playerCrontrol.disable = false;

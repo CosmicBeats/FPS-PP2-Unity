@@ -19,6 +19,8 @@ public class CameraController : MonoBehaviour
     {
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
+
+        //This was literally stopping me from makinig a main menu
     }
 
     // Update is called once per frame
