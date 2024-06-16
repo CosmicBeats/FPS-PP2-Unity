@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text CurrentAmmoText;
     public TMP_Text MaxAmmoText;
     public TMP_Text TotalAmmoText;
+    public TMP_Text GrenadeAmmoText;
     public TMP_Text ItemInfoText;
     public GameObject ItemInfoDisplay;
     

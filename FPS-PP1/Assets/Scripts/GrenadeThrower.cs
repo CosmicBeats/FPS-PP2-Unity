@@ -14,9 +14,11 @@ public class Forcethrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && MinHold != 0)
         {
             ThrowGrenade();
+            MinHold--;
+            GameManager.instance.GrenadeAmmoText.text = MinHold.ToString("F0");
         }
     }
 
