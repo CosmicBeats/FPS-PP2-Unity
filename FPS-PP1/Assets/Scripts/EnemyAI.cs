@@ -209,16 +209,19 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     IEnumerator flashRed()
     {
-        //foreach (var robotPart in robotSoldierModelParts)
-        //{
-        //    robotPart.material.color = Color.red;
-        //}
-        yield return new WaitForSeconds(0.1f);
+        foreach (var robotPart in robotSoldierModelParts)
+        {
+            robotPart.material.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            robotPart.material.color = tempRobot;
+        }
+       // yield return new WaitForSeconds(0.1f);
         //foreach (var robotPart in robotSoldierModelParts)
         //{
         //    robotPart.material.color = tempRobot;
         //}
 
+        
         //model.material.color = Color.red;
         //yield return new WaitForSeconds(0.1f);
         //model.material.color = temp;
