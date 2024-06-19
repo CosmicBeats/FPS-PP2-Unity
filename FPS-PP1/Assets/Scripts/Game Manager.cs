@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     public int totalEnemyCount;
     public bool isPaused;
-    public List<GameObject> totalEnemiesInScene;
+   
     
     void Awake()
     {
@@ -60,17 +60,13 @@ public class GameManager : MonoBehaviour
         loseAnimation = menuLose.GetComponent<Animator>();
 
        
-        totalEnemiesInScene = new List<GameObject>();
-        totalEnemiesInScene.Add(GameObject.FindWithTag("EnemyAI"));
+        
 
         Time.timeScale = 1;
 
-        hiddenDoor = GameObject.FindWithTag("Hidden Door");
-        doorScript = hiddenDoor.GetComponent<Doors>();
-        if(doorScript == null)
-        {
-            return;
-        }
+        //hiddenDoor = GameObject.FindWithTag("Hidden Door");
+        //doorScript = hiddenDoor.GetComponent<Doors>();
+        
         
 
         player = GameObject.FindWithTag("Player");
@@ -120,26 +116,13 @@ public class GameManager : MonoBehaviour
         totalEnemyCount += amount;
         totalEnemyCountText.text = totalEnemyCount.ToString("F0");
         
-        if (totalEnemyCount <= 0 && level == 2)
+        if (totalEnemyCount <= 0)
         {
             StatePause();
             menuActive = menuWin;
             winAnimation.SetTrigger("WinTrigger");
         }
-        if(totalEnemyCount <= 20)
-        {
-            if (doorScript != null)
-            {
-                doorScript.OpenHiddenDoor();
-            }
-        }
-        if (totalEnemyCount <= 0)
-        {
-            if (doorScript != null)
-            {
-                doorScript.OpenHiddenDoor();
-            }
-        }
+       
     }
 
     public void StateLose()
