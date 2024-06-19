@@ -7,6 +7,13 @@ public class Teleport : MonoBehaviour
     PlayerController playerCrontrol;
     [SerializeField] GameObject playerT;
 
+    AudioSource DashaudioSource;
+    ParticleSystem teleParticle;
+
+    [SerializeField] AudioSource audport;
+    [SerializeField] AudioClip[] audDash;
+    [Range(0, 1)][SerializeField] float audDashVol;
+
     public float distance = 10f;
     // Start is called before the first frame update
     void Start()
@@ -29,6 +36,8 @@ public class Teleport : MonoBehaviour
         Vector3 destination = transform.position + transform.forward * distance;
         if(Physics.Linecast(transform.position, destination, out solid)) 
         {
+            audport.PlayOneShot(audDash[Random.Range(0, audDash.Length)], audDashVol);
+            teleParticle.Play();
             destination = transform.position + transform .forward * (solid.distance -1f);
         }
         if(Physics.Raycast(destination, -Vector3.up, out solid))
