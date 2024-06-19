@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class MainMenuManager : MonoBehaviour
@@ -31,6 +32,8 @@ public class MainMenuManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        
+        menuCredits.SetActive(false);
         menuActive = menuMain;
     }
 
