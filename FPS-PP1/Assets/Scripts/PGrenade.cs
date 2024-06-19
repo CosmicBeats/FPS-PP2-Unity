@@ -7,7 +7,7 @@ public class PGrenade : MonoBehaviour
     [SerializeField] Rigidbody gb;
     [SerializeField] Renderer[] model;
 
-    [SerializeField] GameObject explosionEffect;
+    [SerializeField] ParticleSystem explosionEffect;
 
     //set a delay
     public float delay = 3f;
@@ -27,17 +27,19 @@ public class PGrenade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        countdown -= delay;
+        countdown = delay;
         if (countdown <= 0f && !hasExploded)
         {
             Explode();
             hasExploded = true;
         }
     }
+    
     void Explode()
     {
         //Explostion has to Show Effects
         Instantiate(explosionEffect,transform.position, transform.rotation);
+        //explosionEffect.Play();
         // get nearby object and destroy them
         Collider[] colliderToDestroy = Physics.OverlapSphere(transform.position, Radius);
        

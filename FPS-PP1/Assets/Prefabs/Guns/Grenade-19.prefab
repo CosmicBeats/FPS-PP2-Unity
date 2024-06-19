@@ -302,13 +302,13 @@ MonoBehaviour:
   - {fileID: 7675607141966131848}
   - {fileID: 6174017893127756431}
   - {fileID: 3331664183256105106}
-  explosionEffect: {fileID: 0}
-  delay: 3
+  explosionEffect: {fileID: 198856239026640498, guid: 9bba9cf244c53c5439505dfc96fdd11c, type: 3}
+  delay: 2
   Radius: 5
-  countdown: 5
+  countdown: 1.5
   force: 3
   damage: 6
-  destroyTime: 0
+  destroyTime: 1
 --- !u!54 &6845548239054132526
 Rigidbody:
   m_ObjectHideFlags: 0
