@@ -6,6 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class ButtonFunc : MonoBehaviour
 {
+    public Animator transistion;
+    public float TransitionTime;
+
+
+    private void Start()
+    {
+        transistion.SetTrigger("End");
+        transistion.speed = 1;
+    }
     //PAUSE MENU
     public void resume()
     {
@@ -27,30 +36,22 @@ public class ButtonFunc : MonoBehaviour
 
     }
 
-    public void quit()
+    public void quit() //THIS QUITS TO MAIN MENU
     {
-        SceneManager.LoadScene(0);
-
-/*#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-    Application.Quit();
-
-#endif*/
-
+        StartCoroutine(Transtioner(0));
     }
 
     //MAIN MENU
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        StartCoroutine(Transtioner(1));
         
     }
 
     public void Credits()
     {
-        MainMenuManager.instance.menuCredits.SetActive(true);
+        StartCoroutine(PlayCredits());
     }
 
     public void CloseCredits()
@@ -66,5 +67,49 @@ public class ButtonFunc : MonoBehaviour
     Application.Quit();
 
 #endif
+    }
+
+    //TRANSITIONERS (They transition and under varying circumstances)
+
+    IEnumerator Transtioner()
+    {
+        Time.timeScale = 0.1f;
+        transistion.SetTrigger("Same Scene");
+        transistion.speed = 10;
+
+        yield return new WaitForSeconds(TransitionTime * Time.timeScale);
+
+    }
+
+    IEnumerator Transtioner(int SceneIndex)
+    {
+        Time.timeScale = 0.1f;
+        transistion.SetTrigger("Start");
+        transistion.speed = 10;
+
+        yield return new WaitForSeconds(TransitionTime * Time.timeScale);
+
+        SceneManager.LoadScene(SceneIndex);
+    }
+
+    IEnumerator Transtioner(string SceneName)
+    {
+        Time.timeScale = 0.1f;
+        transistion.SetTrigger("Start");
+        transistion.speed = 10;
+
+        yield return new WaitForSeconds(TransitionTime * Time.timeScale);
+
+        SceneManager.LoadScene(SceneName);
+    }
+
+    IEnumerator PlayCredits()
+    {
+        StartCoroutine(Transtioner());
+
+        yield return new WaitForSeconds(TransitionTime * Time.timeScale);
+
+        MainMenuManager.instance.menuCredits.SetActive(true);
+
     }
 }

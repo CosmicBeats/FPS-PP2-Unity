@@ -35,6 +35,7 @@ public class MainMenuManager : MonoBehaviour
         
         menuCredits.SetActive(false);
         menuActive = menuMain;
+        Time.timeScale = 1.0f;
     }
 
     // Update is called once per frame
