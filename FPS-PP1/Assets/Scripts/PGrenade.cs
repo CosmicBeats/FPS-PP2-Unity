@@ -5,6 +5,7 @@ using UnityEngine;
 public class PGrenade : MonoBehaviour
 {
     [SerializeField] Rigidbody gb;
+    [SerializeField] Renderer[] model;
 
     [SerializeField] GameObject explosionEffect;
 
@@ -12,7 +13,7 @@ public class PGrenade : MonoBehaviour
     public float delay = 3f;
     [SerializeField] float Radius; 
     [SerializeField] float countdown;
-    [SerializeField] bool hasExploded = false;
+    bool hasExploded = false;
     [SerializeField] float force;
 
     [SerializeField] int damage;
