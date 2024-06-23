@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Doors : MonoBehaviour
 {
+    Vector3 doorClosedPosition;
+    Vector3 doorOpenPosition;
+    [SerializeField] Animator doorAnimator; 
+
     //door audio
     //[SerializeField] AudioSource aud;
     //[SerializeField] AudioClip[] audOpen;
@@ -18,6 +22,7 @@ public class Doors : MonoBehaviour
 
     void Start()
     {
+
        
     }
 
@@ -25,17 +30,8 @@ public class Doors : MonoBehaviour
 
     public void OpenDoor()
     {
-       
-        doorAnimator.SetBool("Opening", true);
-        
-    }
 
-    public void OpenHiddenDoor()
-    {
-        
-        //Destroy(hiddenDoors[0]);
-        //hiddenDoors.RemoveAt(0);
-        
+        doorAnimator.SetBool("Opening", true);
         
     }
 }

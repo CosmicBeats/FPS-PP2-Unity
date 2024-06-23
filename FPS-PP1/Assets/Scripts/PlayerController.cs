@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour ,IDamage
 
     public List<GunStats> gunList = new List<GunStats>();
 
+    public List<GameObject> itemPickups = new List<GameObject>();
+
     public int currentArmor;
     Vector3 moveDir;
     Vector3 playerVelocity;

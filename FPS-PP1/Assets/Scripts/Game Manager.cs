@@ -63,11 +63,13 @@ public class GameManager : MonoBehaviour
         
 
         Time.timeScale = 1;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         //hiddenDoor = GameObject.FindWithTag("Hidden Door");
         //doorScript = hiddenDoor.GetComponent<Doors>();
-        
-        
+
+
 
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
