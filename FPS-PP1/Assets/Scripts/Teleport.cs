@@ -7,8 +7,7 @@ public class Teleport : MonoBehaviour
     PlayerController playerCrontrol;
     [SerializeField] GameObject playerT;
 
-    AudioSource DashaudioSource;
-    ParticleSystem teleParticle;
+    [SerializeField] ParticleSystem teleParticle;
 
     [SerializeField] AudioSource audport;
     [SerializeField] AudioClip[] audDash;
@@ -45,6 +44,7 @@ public class Teleport : MonoBehaviour
             destination.y = -0.5f;
             destination = solid.point;
             transform.position = destination;
+            Instantiate(teleParticle,destination,transform.rotation);
         }
     }
 
@@ -55,6 +55,7 @@ public class Teleport : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         //teleports
         blinkForward();
+
         //playerT.transform.position = Vector3.zero;
         //reactivate player controls
         yield return new WaitForSeconds(0.5f);

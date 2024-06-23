@@ -34,7 +34,7 @@ public class Forcethrow : MonoBehaviour
             GrenadeVelocity.y = transform.forward.y * ThrowHieght;
             GrenadeVelocity.x = transform.forward.x * throwForce;
             //GrenadeVelocity.y = transform.forward.y * ThrowHieght;
-            GrenadeVelocity.y = throwGravity;
+           // GrenadeVelocity.y = throwGravity;
             playerHold--;
           // GrenadeVelocity.y = ThrowSpeed;
             GameManager.instance.GrenadeAmmoText.text = playerHold.ToString("F0");
@@ -56,13 +56,13 @@ public class Forcethrow : MonoBehaviour
        
         GameObject grenade = Instantiate(grenadeP,transform.position, transform.rotation);
         Rigidbody gb = grenade.GetComponent<Rigidbody>();
-        gb.velocity = transform.forward * throwForce;
+        gb.velocity = Camera.main.transform.forward * throwForce;
         //throwForce * -1;
         GrenadeVelocity.y = throwForce;
         GrenadeVelocity.x = throwForce;
         //multi the throwspeed by -1
         GrenadeVelocity.y -= throwForce * Time.deltaTime;
-        gb.AddForce(transform.forward *  throwForce, ForceMode.VelocityChange);
+        gb.AddForce(Camera.main.transform.forward *  throwForce, ForceMode.VelocityChange);
         Destroy(grenade,delayTime);
     }
 }

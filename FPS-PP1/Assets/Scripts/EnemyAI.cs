@@ -30,7 +30,9 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] bool doesDropKey;
     [SerializeField] GameObject keyToDrop;
 
-
+    ParticleSystem dmgParticle;
+    //emey tracking players last location
+    private List<GameObject> point;
     // Audio related stuff credit goes to mike.
     [SerializeField] AudioSource aud;
     
@@ -44,7 +46,10 @@ public class EnemyAI : MonoBehaviour, IDamage
     bool playerInRange;
     bool destChosen;
 
-       
+    Patroller patrol;
+    private float waypointcount; //keeps track of time for switching wp
+    [SerializeField] int speedFromWaypoint; //chnages the speed of the position the enemy moves too 
+
 
     //Color temp;
     Color tempRobot;
@@ -90,12 +95,24 @@ public class EnemyAI : MonoBehaviour, IDamage
             StartCoroutine(roam());
                    
         }
-        else if (!playerInRange)
+        else if (!playerInRange && canSeePlayer())
         {
+            playerDir = this.GetComponent<NavMeshAgent>().destination;
+            lastKnown();
             StartCoroutine(roam());
+        }
+        if(!playerInRange && canSeePlayer())
+        {
+            waypointcount += Time.deltaTime;
+            if(waypointcount > speedFromWaypoint)
+            {
+                WeakPoint();
+                waypointcount = 0;
+            }
         }
 
     }
+    //make a new roam that moves based off the player sphere instead of the enemy
     IEnumerator roam()
     {
         if (!destChosen && agent.remainingDistance < 0.05f)
@@ -113,8 +130,21 @@ public class EnemyAI : MonoBehaviour, IDamage
             agent.SetDestination(hit.position);
             destChosen = false;
         }
+        //playerDir = this.GetComponent<NavMeshAgent>().destination;
     }
     //head model needed 
+    void WeakPoint()
+    {
+        patrol = GameManager.instance.player.GetComponent<Patroller>();
+        if (patrol != null)
+        {
+
+        }
+
+        int chosen = Random.Range(0, patrol.waypoints.Length);
+        Transform location = patrol.waypoints[chosen];
+        agent.SetDestination(location.position);
+    }
     bool canSeePlayer()
     {
         playerDir = GameManager.instance.player.transform.position - headPos.position;
@@ -130,7 +160,8 @@ public class EnemyAI : MonoBehaviour, IDamage
             {
                 agent.stoppingDistance = stoppingDisOrig;
                 //making the player destination
-                agent.SetDestination(GameManager.instance.player.transform.position);
+               WeakPoint();
+                //agent.SetDestination(GameManager.instance.player.transform.position);
                 //then start shooting
                 if (!isShooting)
                 {
@@ -145,6 +176,12 @@ public class EnemyAI : MonoBehaviour, IDamage
         }
         agent.stoppingDistance = 0;
         return false;
+    }
+    void lastKnown()
+    {
+        //this is going to be changed to weak point
+        point.Add(new GameObject());
+        point[point.Count - 1].transform.position = playerDir;
     }
     void faceTarget()
     {
@@ -190,11 +227,11 @@ public class EnemyAI : MonoBehaviour, IDamage
         Hp -= amount;
 
         // Credit Mike
+          dmgParticle.Play();
         aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
-
         agent.SetDestination(GameManager.instance.player.transform.position);
 
-        //StartCoroutine(flashRed());
+        StartCoroutine(flashRed());
         if (Hp <= 0)
         {
             if(doesDropKey)

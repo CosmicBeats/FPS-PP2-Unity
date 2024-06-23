@@ -139,9 +139,9 @@ MonoBehaviour:
   - {fileID: 4080590660919442125}
   explosionEffect: {fileID: 6671622457646986330, guid: c247e710c14b1984994b2dbcf2d98073, type: 3}
   disable: 1
-  Radius: 12
+  Radius: 10
   countdown: 2
-  force: 100
+  force: 50
   damage: 6
   destroyTime: 3
 --- !u!54 &5984513485749826980
