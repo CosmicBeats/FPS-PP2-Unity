@@ -4,21 +4,13 @@ using UnityEngine;
 
 public class Doors : MonoBehaviour
 {
-    Vector3 doorClosedPosition;
-    Vector3 doorOpenPosition;
-    [SerializeField] Animator doorAnimator; 
+    [SerializeField] MeshRenderer doorMesh;
 
     //door audio
     //[SerializeField] AudioSource aud;
     //[SerializeField] AudioClip[] audOpen;
     //[Range(0, 1)][SerializeField] float audOpenVol;
-
-    [SerializeField] Animator doorAnimator;
-    string currentState;
-    //const string doorIdle = "Door_Idle";
-    //const string doorOpen = "Door_Open";
-
-
+    
 
     void Start()
     {
@@ -30,9 +22,8 @@ public class Doors : MonoBehaviour
 
     public void OpenDoor()
     {
-
-        doorAnimator.SetBool("Opening", true);
-        
+        doorMesh.enabled = false;
+        gameObject.GetComponent<Collider>().enabled = false ;  
     }
 }
 

@@ -4597,6 +4597,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Hidden Door
       objectReference: {fileID: 0}
+    - target: {fileID: 8945359798393373278, guid: be4a4e9d2c949da41ad529488653cb74, type: 3}
+      propertyPath: doorMesh
+      value: 
+      objectReference: {fileID: 509289260}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8771649982076040701, guid: be4a4e9d2c949da41ad529488653cb74, type: 3}
@@ -4605,6 +4609,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be4a4e9d2c949da41ad529488653cb74, type: 3}
+--- !u!23 &509289260 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1834491677312203542, guid: be4a4e9d2c949da41ad529488653cb74, type: 3}
+  m_PrefabInstance: {fileID: 509289259}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &512035720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4827,11 +4836,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5012311896759792232, guid: afd670b8d263cdb4aa6c9a41f8708b58, type: 3}
+      propertyPath: doorMesh
+      value: 
+      objectReference: {fileID: 520891731}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afd670b8d263cdb4aa6c9a41f8708b58, type: 3}
+--- !u!23 &520891731 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2024430501340623176, guid: afd670b8d263cdb4aa6c9a41f8708b58, type: 3}
+  m_PrefabInstance: {fileID: 520891730}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &533896441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2418710166859910086, guid: 9cb34b6b53710ef4f96431ae6f750d1d, type: 3}
@@ -15583,6 +15601,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5012311896759792232, guid: afd670b8d263cdb4aa6c9a41f8708b58, type: 3}
+      propertyPath: doorMesh
+      value: 
+      objectReference: {fileID: 2137405893}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15604,6 +15626,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0fe41c15c7a5c419aeb2edf084d736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!23 &2137405893 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2024430501340623176, guid: afd670b8d263cdb4aa6c9a41f8708b58, type: 3}
+  m_PrefabInstance: {fileID: 2137405890}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2141089481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17839,7 +17866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0fe41c15c7a5c419aeb2edf084d736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorAnimator: {fileID: 0}
+  doorMesh: {fileID: 2024430502158271378}
 --- !u!33 &5060702026252843600
 MeshFilter:
   m_ObjectHideFlags: 0
