@@ -13,13 +13,17 @@ public class Doors : MonoBehaviour
     //[SerializeField] AudioClip[] audOpen;
     //[Range(0, 1)][SerializeField] float audOpenVol;
 
+    [SerializeField] Animator doorAnimator;
+    string currentState;
+    //const string doorIdle = "Door_Idle";
+    //const string doorOpen = "Door_Open";
+
 
 
     void Start()
     {
 
        
-
     }
 
    
