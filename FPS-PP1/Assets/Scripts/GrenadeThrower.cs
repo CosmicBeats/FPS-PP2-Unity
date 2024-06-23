@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Forcethrow : MonoBehaviour
@@ -30,8 +31,9 @@ public class Forcethrow : MonoBehaviour
         if (Input.GetButtonDown("Grenade") && playerHold < MaxGrenade)
         {
             ThrowGrenade();
-            GrenadeVelocity = transform.forward * throwForce;
             GrenadeVelocity.y = transform.forward.y * ThrowHieght;
+            GrenadeVelocity.x = transform.forward.x * throwForce;
+            //GrenadeVelocity.y = transform.forward.y * ThrowHieght;
             GrenadeVelocity.y = throwGravity;
             playerHold--;
           // GrenadeVelocity.y = ThrowSpeed;

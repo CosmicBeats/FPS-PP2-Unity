@@ -15,7 +15,7 @@ public class PGrenade : MonoBehaviour
     //[SerializeField] int delay;
     [SerializeField] int Radius; 
     [SerializeField] float countdown;
-    bool hasExploded = false;
+   // bool hasExploded = false;
     [SerializeField] float force;
 
     [SerializeField] int damage;
@@ -24,27 +24,29 @@ public class PGrenade : MonoBehaviour
     void Start()
     {
         //countdown = delay;
-        
-        
+        /*if (countdown <= 0f && !hasExploded)
+       {
+           //Explode();
+           Invoke("Explode", countdown);
+           //OnTriggerEnter();
+           hasExploded = true;
+       }*/
+        Invoke("Explode", countdown);
+
     }
 
     // Update is called once per frame
     void Update()
     {
        /* countdown = delay;*/
-        if (countdown <= 0f && !hasExploded)
-        {
-            Explode();
-            //OnTriggerEnter();
-            hasExploded = true;
-        }
-        countdown -= .5f;
+       
+        /*countdown -= .5f;*/
 
     }
     //trigger for the grenade 
     //it should travel at 3 floats
    
-    public void OnTriggerEnter(Collider other)
+/*    public void OnTriggerEnter(Collider other)
     {
         //the trigger needs to be disable and then turn on when used
         //taking dmg apon entering
@@ -58,27 +60,30 @@ public class PGrenade : MonoBehaviour
                 dmg.TakeDamage(damage);
             }
         }
-        /*if (other.CompareTag("Player") || other.CompareTag("EnemyAI"))
+        *//*if (other.CompareTag("Player") || other.CompareTag("EnemyAI"))
         {
             //disable = true;
 
           
-        }*/
-    }
+        }*//*
+    }*/
     //if the trigger works this should not be needed
-    /* public void OnCollisionEnter(Collision other)
+    public void OnCollisionEnter(Collision other)
      {
 
-         //timer needs to end and damage anything in its radius
-         //damage 
-         IDamage dmg = other.gameObject.GetComponent<IDamage>();
-
-         if (dmg != null)
-         {
-             Explode();
-             dmg.TakeDamage(damage);
-         }
-     }*/
+        //timer needs to end and damage anything in its radius
+        //damage 
+        if (!disable)
+        {
+            IDamage dmg = other.gameObject.GetComponent<IDamage>();
+            //needs to look for and take dmg
+            if (dmg != null)
+            {
+                //Explode();
+               // dmg.TakeDamage(damage);
+            }
+        }
+    }
     public void Knockback()
     {
         Collider[] colliderToMove = Physics.OverlapSphere(transform.position, Radius);
@@ -99,7 +104,7 @@ public class PGrenade : MonoBehaviour
     void Explode()
     {
         //Explostion has to Show Effects
-        ParticleSystem exp = Instantiate(explosionEffect,transform.position, transform.rotation);
+        Instantiate(explosionEffect,transform.position, transform.rotation);
         //explosionEffect.Play();
         // get nearby object and destroy them
         Collider[] colliderToDestroy = Physics.OverlapSphere(transform.position, Radius);
@@ -115,21 +120,21 @@ public class PGrenade : MonoBehaviour
             }
         }
 
-       /* Collider[] colliderToMove = Physics.OverlapSphere(transform.position, Radius);
-        //add force to the object and move them 
-        foreach(Collider nearbyObject in colliderToMove)
-        {
-            //Add Force 
-            Rigidbody gb = nearbyObject.GetComponent<Rigidbody>();
-            if (gb != null)
-            {
-                gb.AddExplosionForce(force, transform.position, Radius);
-            }
+        /* Collider[] colliderToMove = Physics.OverlapSphere(transform.position, Radius);
+         //add force to the object and move them 
+         foreach(Collider nearbyObject in colliderToMove)
+         {
+             //Add Force 
+             Rigidbody gb = nearbyObject.GetComponent<Rigidbody>();
+             if (gb != null)
+             {
+                 gb.AddExplosionForce(force, transform.position, Radius);
+             }
 
-        }*/
+         }*/
         // get nearby object
 
-        
-        Destroy(exp, destroyTime);
+       
+        //Destroy(explosionEffect,destroyTime);
     }
 }
