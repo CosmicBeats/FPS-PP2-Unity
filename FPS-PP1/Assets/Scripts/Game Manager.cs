@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] TMP_Text totalEnemyCountText;
+    [SerializeField] TMP_Text displayShipInfo;
 
     [SerializeField] int level;
     
@@ -120,9 +121,8 @@ public class GameManager : MonoBehaviour
         
         if (totalEnemyCount <= 0)
         {
-            StatePause();
-            menuActive = menuWin;
-            winAnimation.SetTrigger("WinTrigger");
+            StartCoroutine(DisplayShipInfo());
+
         }
        
     }
@@ -133,7 +133,12 @@ public class GameManager : MonoBehaviour
         menuActive = menuLose;
     }
 
-
+    IEnumerator DisplayShipInfo()
+    {
+        displayShipInfo.enabled = true;
+        yield return new WaitForSeconds(5);
+        displayShipInfo.enabled = false;
+    }
    
     
 }

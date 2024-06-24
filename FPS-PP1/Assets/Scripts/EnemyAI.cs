@@ -246,11 +246,11 @@ public class EnemyAI : MonoBehaviour, IDamage
         Hp -= amount;
 
         // Credit Mike
-          dmgParticle.Play();
+          //dmgParticle.Play();
         aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
         agent.SetDestination(GameManager.instance.player.transform.position);
 
-        StartCoroutine(flashRed());
+        //StartCoroutine(flashRed());
         if (Hp <= 0)
         {
             if(doesDropKey)
