@@ -32,12 +32,12 @@ public class Teleport : MonoBehaviour
     public void blinkForward()
     {
         RaycastHit solid;
-        Vector3 destination = transform.position + transform.forward * distance;
+        Vector3 destination = transform.position * distance;
         if(Physics.Linecast(transform.position, destination, out solid)) 
         {
             audport.PlayOneShot(audDash[Random.Range(0, audDash.Length)], audDashVol);
             teleParticle.Play();
-            destination = transform.position + transform .forward * (solid.distance -1f);
+            destination = transform.position + transform.forward * (solid.distance -1f);
         }
         if(Physics.Raycast(destination, -Vector3.up, out solid))
         {
@@ -59,7 +59,7 @@ public class Teleport : MonoBehaviour
 
         //playerT.transform.position = Vector3.zero;
         //reactivate player controls
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
         playerCrontrol.disable = false;
     }
 }
