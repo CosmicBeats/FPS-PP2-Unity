@@ -153,7 +153,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         Transform location = patrol.waypoints[chosen];
         if(location == null)
         {
-            int q = 0;
+            chosen = 0;
         }
         agent.SetDestination(location.position);
     }
@@ -263,7 +263,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         }
     }
 
-    IEnumerator flashRed()
+    /*IEnumerator flashRed()
     {
         foreach (var robotPart in robotSoldierModelParts)
         {
@@ -283,7 +283,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         //model.material.color = temp;
 
 
-    }
+    }*/
 }
 
 
