@@ -153,7 +153,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         Transform location = patrol.waypoints[chosen];
         if(location == null)
         {
-            int q = 0;
+            chosen = 0;
         }
         agent.SetDestination(location.position);
     }
