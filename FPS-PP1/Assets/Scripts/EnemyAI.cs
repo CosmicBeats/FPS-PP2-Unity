@@ -250,7 +250,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
         agent.SetDestination(GameManager.instance.player.transform.position);
 
-        StartCoroutine(flashRed());
+        //StartCoroutine(flashRed());
         if (Hp <= 0)
         {
             if(doesDropKey)
@@ -263,7 +263,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         }
     }
 
-    IEnumerator flashRed()
+    /*IEnumerator flashRed()
     {
         foreach (var robotPart in robotSoldierModelParts)
         {
@@ -283,7 +283,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         //model.material.color = temp;
 
 
-    }
+    }*/
 }
 
 
