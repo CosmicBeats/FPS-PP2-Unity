@@ -143,6 +143,7 @@ public class PlayerController : MonoBehaviour ,IDamage
         }
 
     }
+    
 
     IEnumerator playSteps() 
     {

@@ -11,22 +11,22 @@ public class Patroller : MonoBehaviour
     [SerializeField] float dist;
 
     
-    void Start()
+   /* void Start()
     {
         //starts on the first index
         waypointIndex = 0;
         //ai will look at the way point 
-        transform.LookAt(waypoints[waypointIndex].position);
+        //transform.LookAt(waypoints[waypointIndex].position);
     }
 
    
     void Update()
     {
-        dist = Vector3.Distance(transform.position, waypoints[waypointIndex].position);
+       *//* dist = Vector3.Distance(transform.position, waypoints[waypointIndex].position);
         if (dist < 1f) { }
         {
             IncreaseIndex();
-        }
+        }*//*
     }
     private void Patrol()
     {
@@ -40,5 +40,5 @@ public class Patroller : MonoBehaviour
             waypointIndex = 0;
             transform.LookAt(waypoints[waypointIndex].position);
         }
-    }
+    }*/
 }

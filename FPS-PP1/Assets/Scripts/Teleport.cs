@@ -41,8 +41,9 @@ public class Teleport : MonoBehaviour
         }
         if(Physics.Raycast(destination, -Vector3.up, out solid))
         {
-            destination.y = -0.5f;
+            
             destination = solid.point;
+            destination.y = 0.6f;
             transform.position = destination;
             Instantiate(teleParticle,destination,transform.rotation);
         }

@@ -49,7 +49,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     Patroller patrol;
     private float waypointcount; //keeps track of time for switching wp
     [SerializeField] int speedFromWaypoint; //chnages the speed of the position the enemy moves too 
-
+    private int prevWaypoint;
 
     //Color temp;
     Color tempRobot;
@@ -58,7 +58,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
 
     
-    [SerializeField] GameObject trigger;
+    //[SerializeField] GameObject trigger;
     float angleToPlayer;
     float stoppingDisOrig;
 
@@ -95,17 +95,17 @@ public class EnemyAI : MonoBehaviour, IDamage
             StartCoroutine(roam());
                    
         }
-        else if (!playerInRange && canSeePlayer())
+        else if (!playerInRange && !canSeePlayer())
         {
             playerDir = this.GetComponent<NavMeshAgent>().destination;
-            lastKnown();
+            //lastKnown();
             StartCoroutine(roam());
         }
-        if(!playerInRange && canSeePlayer())
+        if(playerInRange && canSeePlayer())
         {
             waypointcount += Time.deltaTime;
             if(waypointcount > speedFromWaypoint)
-            {
+            {                
                 WeakPoint();
                 waypointcount = 0;
             }
@@ -136,13 +136,25 @@ public class EnemyAI : MonoBehaviour, IDamage
     void WeakPoint()
     {
         patrol = GameManager.instance.player.GetComponent<Patroller>();
-        if (patrol != null)
+        if (patrol == null)
         {
-
+            //maybe use raom
+            roam();
+            return;
         }
 
-        int chosen = Random.Range(0, patrol.waypoints.Length);
+
+        int chosen = 0;
+        while(chosen == prevWaypoint)
+        {
+            chosen = Random.Range(0, patrol.waypoints.Length);
+        }
+        prevWaypoint = chosen;
         Transform location = patrol.waypoints[chosen];
+        if(location == null)
+        {
+            int q = 0;
+        }
         agent.SetDestination(location.position);
     }
     bool canSeePlayer()
@@ -177,16 +189,23 @@ public class EnemyAI : MonoBehaviour, IDamage
         agent.stoppingDistance = 0;
         return false;
     }
-    void lastKnown()
+    /*void lastKnown()
     {
         //this is going to be changed to weak point
         point.Add(new GameObject());
         point[point.Count - 1].transform.position = playerDir;
-    }
+    }*/
     void faceTarget()
     {
         Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, 0, playerDir.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            WeakPoint();
+        }
     }
     public void OnTriggerEnter(Collider other)
     {
