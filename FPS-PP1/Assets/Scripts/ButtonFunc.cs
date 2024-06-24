@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonFunc : MonoBehaviour
 {
-    public Animator transistion;
+    [SerializeField] Animator transistion;
     public float TransitionTime;
 
 

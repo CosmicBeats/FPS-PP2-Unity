@@ -135,9 +135,9 @@ public class GameManager : MonoBehaviour
 
     IEnumerator DisplayShipInfo()
     {
-        displayShipInfo.enabled = true;
-        yield return new WaitForSeconds(5);
-        displayShipInfo.enabled = false;
+        displayShipInfo.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3);
+        displayShipInfo.gameObject.SetActive(false);
     }
    
     

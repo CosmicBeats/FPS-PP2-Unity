@@ -9,13 +9,14 @@ public class LoadFinalLevel : MonoBehaviour
     float levelLoaderCountDown;
     [SerializeField] TMP_Text countDownText;
     [SerializeField] GameObject countDownTextLabel;
+    [SerializeField] string sceneName;
     
 
 
     void Start()
     {
         
-        levelLoaderCountDown = 5;  
+        levelLoaderCountDown = 3;  
     }
 
     
@@ -27,9 +28,9 @@ public class LoadFinalLevel : MonoBehaviour
             levelLoaderCountDown -= Time.deltaTime;
             countDownText.text = levelLoaderCountDown.ToString("F1");
         }
-        else if(other.CompareTag("Player") && levelLoaderCountDown <= 0)
+        else if(other.CompareTag("Player") && levelLoaderCountDown <= 0 && GameManager.instance.totalEnemyCount <= 0)
         {
-            SceneManager.LoadScene("MainScene 2");
+            SceneManager.LoadScene(sceneName);
             
             countDownTextLabel.SetActive(false);
         }
@@ -39,7 +40,7 @@ public class LoadFinalLevel : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             countDownTextLabel.SetActive(false);
-            levelLoaderCountDown = 5;
+            levelLoaderCountDown = 3;
         }
     }
 }

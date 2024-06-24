@@ -37,7 +37,7 @@ public class Teleport : MonoBehaviour
         {
             audport.PlayOneShot(audDash[Random.Range(0, audDash.Length)], audDashVol);
             teleParticle.Play();
-            destination = transform.position + transform .forward * (solid.distance -1f);
+            destination = transform.position + transform.forward * (solid.distance -1f);
         }
         if(Physics.Raycast(destination, -Vector3.up, out solid))
         {
