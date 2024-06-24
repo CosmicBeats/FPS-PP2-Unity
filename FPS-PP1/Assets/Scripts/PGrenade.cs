@@ -7,6 +7,7 @@ public class PGrenade : MonoBehaviour
     [SerializeField] Rigidbody gb;
     [SerializeField] Renderer[] model;
 
+
     [SerializeField] ParticleSystem explosionEffect;
     //disabling the collision
     public bool disable = false;

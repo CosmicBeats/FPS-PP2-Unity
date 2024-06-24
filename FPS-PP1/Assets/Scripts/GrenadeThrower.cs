@@ -13,7 +13,7 @@ public class Forcethrow : MonoBehaviour
     //gravity
     [SerializeField] int throwGravity;
 
-    /*[SerializeField] int MinHold;*/
+    //[SerializeField] int MinHold;
     [SerializeField] int playerHold;
     [SerializeField] int MaxGrenade;
 
@@ -28,16 +28,17 @@ public class Forcethrow : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetButtonDown("Grenade") && playerHold < MaxGrenade)
+        if (Input.GetButtonDown("Grenade") && playerHold <= MaxGrenade)
         {
             ThrowGrenade();
             GrenadeVelocity.y = transform.forward.y * ThrowHieght;
             GrenadeVelocity.x = transform.forward.x * throwForce;
             //GrenadeVelocity.y = transform.forward.y * ThrowHieght;
-           // GrenadeVelocity.y = throwGravity;
+           GrenadeVelocity.y = throwGravity;
             playerHold--;
-          // GrenadeVelocity.y = ThrowSpeed;
-            GameManager.instance.GrenadeAmmoText.text = playerHold.ToString("F0");
+            MaxGrenade--;
+           //GrenadeVelocity.y = throwForce;
+            GameManager.instance.GrenadeAmmoText.text = MaxGrenade.ToString("F0");
         }
         GrenadeVelocity.y -= throwForce * Time.deltaTime;
         
@@ -45,16 +46,12 @@ public class Forcethrow : MonoBehaviour
     }
     //collistion for the grenade is not here
 
-    void ReverseGround()
-    {
-
-    }
     void ThrowGrenade()
     {
         //if(grenadeP )
         GrenadeVelocity = Vector3.zero;
        
-        GameObject grenade = Instantiate(grenadeP,transform.position, transform.rotation);
+        GameObject grenade = Instantiate(grenadeP, Camera.main.transform.position, transform.rotation);
         Rigidbody gb = grenade.GetComponent<Rigidbody>();
         gb.velocity = Camera.main.transform.forward * throwForce;
         //throwForce * -1;
@@ -62,7 +59,7 @@ public class Forcethrow : MonoBehaviour
         GrenadeVelocity.x = throwForce;
         //multi the throwspeed by -1
         GrenadeVelocity.y -= throwForce * Time.deltaTime;
-        gb.AddForce(Camera.main.transform.forward *  throwForce, ForceMode.VelocityChange);
+        gb.AddForce(transform.forward *  throwForce, ForceMode.VelocityChange);
         Destroy(grenade,delayTime);
     }
 }

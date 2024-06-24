@@ -5055,11 +5055,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e02bea760dd9d543a34e7b44967f58d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 8
-  ThrowHieght: 16
-  throwGravity: 15
-  playerHold: 4
-  MaxGrenade: 4
+  throwForce: 9
+  ThrowHieght: 18
+  throwGravity: 12
+  playerHold: 1
+  MaxGrenade: 10
   delayTime: 5
   grenadeP: {fileID: 3631784961781508391, guid: 47d276070f51ad64493cb88e127f282e, type: 3}
 --- !u!114 &2703384663875319429
