@@ -229,8 +229,9 @@ public class EnemyAI : MonoBehaviour, IDamage
         aud.PlayOneShot(audShoot[Random.Range(0, audShoot.Length)], audShootVol);
 
         isShooting = true;
-        anim.SetTrigger("Shoot");
         createBullet();
+        anim.SetTrigger("Shoot");
+       
         //Instantiate(bullet, shootPos.position, transform.rotation);
 
         yield return new WaitForSeconds(shootRate);

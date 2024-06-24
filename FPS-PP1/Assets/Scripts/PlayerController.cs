@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour ,IDamage
 
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
+    
     [SerializeField] int jumpMax;
     [SerializeField] int jumpSpeed;
     [SerializeField] int gravity;
@@ -27,8 +28,8 @@ public class PlayerController : MonoBehaviour ,IDamage
     ParticleSystem gunParticle;
     [SerializeField] Animator gunAnimator;
 
-
-
+    [SerializeField] int ChrouchMod;
+    [SerializeField] float normalHeight, crouchHeight;
 
     public List<GunStats> gunList = new List<GunStats>();
 
@@ -84,11 +85,11 @@ public class PlayerController : MonoBehaviour ,IDamage
     {
         //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
         //disables player control for teleport
+        Movement();
         if (!disable)
         {
-            Movement();
+            
             SelectGun();
-
             Reloading();
         }
     }
@@ -105,7 +106,7 @@ public class PlayerController : MonoBehaviour ,IDamage
         controller.Move(moveDir * speed * Time.deltaTime);
 
         Sprint();
-
+        Crouch();
         if (Input.GetButton("Shoot") && gunList.Count > 0 && gunList[selectedGun].currentAmmo > 0 && !isShooting && !gunList[selectedGun].isReloading)
         {
             StartCoroutine(Shoot());
@@ -139,6 +140,22 @@ public class PlayerController : MonoBehaviour ,IDamage
         else if (Input.GetButtonUp("Sprint"))
         {
             speed /= sprintMod;
+            isSprinting = false;
+        }
+
+    }
+    void Crouch()
+    {
+        if (Input.GetButtonDown("Crouch"))
+        {
+            controller.height = crouchHeight;
+            speed /= ChrouchMod;
+            isSprinting = true;
+        }
+        else if (Input.GetButtonUp("Crouch"))
+        {
+            controller.height = normalHeight;
+            speed *= ChrouchMod;
             isSprinting = false;
         }
 
