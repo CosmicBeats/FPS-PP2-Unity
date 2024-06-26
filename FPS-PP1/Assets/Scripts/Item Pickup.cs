@@ -39,6 +39,7 @@ public class ItemPickup : MonoBehaviour
         {
             playerInRange = true;
             displayShipParts.SetActive(true);
+            
 
         }
     }

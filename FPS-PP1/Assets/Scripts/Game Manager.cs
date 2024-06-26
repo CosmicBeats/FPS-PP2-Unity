@@ -36,9 +36,11 @@ public class GameManager : MonoBehaviour
     public TMP_Text ItemInfoText;
     public GameObject ItemInfoDisplay;
     public GameObject displayWin;
+
+    public TMP_Text gerneratorsRepaired;
     
     public GameObject checkpointPopup;
-
+    public int generatorsFixed;
     Doors doorScript;
     GameObject hiddenDoor;
 
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     public int totalEnemyCount;
     public bool isPaused;
+    
    
     
     void Awake()
@@ -121,7 +124,11 @@ public class GameManager : MonoBehaviour
     {
         totalEnemyCount += amount;
         totalEnemyCountText.text = totalEnemyCount.ToString("F0");
-        
+        generatorsFixed = playerScript.itemsPlaced;
+        gerneratorsRepaired.text = generatorsFixed.ToString("F0");
+
+
+
         if (totalEnemyCount <= 0)
         {
             StartCoroutine(DisplayShipInfo());

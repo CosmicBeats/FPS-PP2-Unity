@@ -26,6 +26,8 @@ public class ItemUse : MonoBehaviour
             pls.enabled = true; 
             hasBeenPlaced = true;
             playerController.itemsPlaced++;
+            GameManager.instance.generatorsFixed = playerController.itemsPlaced;
+            playerController.updatePlayerUI();
             sparks.Stop();
         }
     }

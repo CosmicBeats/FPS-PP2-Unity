@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour ,IDamage
     [Range(0, 1)][SerializeField] float audStepVol;
 
     [Range(2, 4)][SerializeField] int audSprintSpeed;
+    
 
     bool playingSteps;
     bool isSprinting;
@@ -325,6 +326,8 @@ public class PlayerController : MonoBehaviour ,IDamage
     {
         GameManager.instance.playerHPBar.fillAmount = (float)currentHP / maxHP;
         GameManager.instance.playerArmorBar.fillAmount = (float)currentArmor / MaxArmor;
+        //GameManager.instance.gerneratorsRepaired.text = itemsPlaced.ToString();
+        
     }
 
     void UpdateGunSound()
