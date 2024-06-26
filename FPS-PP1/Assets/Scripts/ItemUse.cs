@@ -25,6 +25,7 @@ public class ItemUse : MonoBehaviour
         {
             pls.enabled = true; 
             hasBeenPlaced = true;
+            playerController.itemsPlaced++;
             sparks.Stop();
         }
     }

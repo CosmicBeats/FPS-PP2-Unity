@@ -11,9 +11,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [SerializeField] GameObject menuActive;
+    public GameObject menuActive;
     [SerializeField] GameObject menuPause;
-    [SerializeField] GameObject menuWin;
+    public GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] TMP_Text totalEnemyCountText;
     [SerializeField] TMP_Text displayShipInfo;
@@ -33,13 +33,14 @@ public class GameManager : MonoBehaviour
     public TMP_Text GrenadeAmmoText;
     public TMP_Text ItemInfoText;
     public GameObject ItemInfoDisplay;
+    public GameObject displayWin;
     
     public GameObject checkpointPopup;
 
     Doors doorScript;
     GameObject hiddenDoor;
 
-    Animator winAnimation;
+    public Animator winAnimation;
     public Animator loseAnimation;
 
     public int totalEnemyCount;

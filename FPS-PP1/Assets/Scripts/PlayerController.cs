@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour ,IDamage
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;
 
+    public int itemsPlaced;
 
     public GunStats gunStats;
     AudioSource gunAudioSource;
@@ -67,6 +68,8 @@ public class PlayerController : MonoBehaviour ,IDamage
         //currentArmor =MaxArmor;
         //currentHP = maxHP;
         //updatePlayerUI();
+
+        itemsPlaced = 0;
 
         SpawnPlayer();
     }
