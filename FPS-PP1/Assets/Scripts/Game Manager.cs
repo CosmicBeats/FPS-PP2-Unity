@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] TMP_Text totalEnemyCountText;
     [SerializeField] TMP_Text displayShipInfo;
+    public GameObject objectiveOne;
+    
 
     [SerializeField] int level;
     

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class LoadFinalLevel : MonoBehaviour
 {
     float levelLoaderCountDown;
+    public bool isFinalLevel =false;
     [SerializeField] TMP_Text countDownText;
     [SerializeField] GameObject countDownTextLabel;
     [SerializeField] string sceneName;
@@ -30,6 +31,7 @@ public class LoadFinalLevel : MonoBehaviour
         }
         else if(other.CompareTag("Player") && levelLoaderCountDown <= 0 && GameManager.instance.totalEnemyCount <= 0)
         {
+            isFinalLevel = true;
             SceneManager.LoadScene(sceneName);
             
             countDownTextLabel.SetActive(false);
