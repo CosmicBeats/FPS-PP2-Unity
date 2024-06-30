@@ -1905,8 +1905,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5113222739100414263, guid: 8021c1f8a5f76db4ba9d4e0475fafb7c, type: 3}
+      propertyPath: MaxGrenade
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5113222739100414263, guid: 8021c1f8a5f76db4ba9d4e0475fafb7c, type: 3}
       propertyPath: playerHold
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8221354315470892115, guid: 8021c1f8a5f76db4ba9d4e0475fafb7c, type: 3}
       propertyPath: audDmgVol

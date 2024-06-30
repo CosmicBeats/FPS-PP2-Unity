@@ -25,10 +25,14 @@ public class Forcethrow : MonoBehaviour
     [SerializeField] GameObject grenadeP;
 
     // Update is called once per frame
+    private void Start()
+    {
+        playerHold = MaxGrenade;
+    }
     void Update()
     {
         
-        if (Input.GetButtonDown("Grenade") && playerHold <= MaxGrenade)
+        if (Input.GetButtonDown("Grenade") && playerHold > 0)
         {
             ThrowGrenade();
             GrenadeVelocity.y = transform.forward.y * ThrowHieght;
@@ -36,7 +40,7 @@ public class Forcethrow : MonoBehaviour
             //GrenadeVelocity.y = transform.forward.y * ThrowHieght;
            GrenadeVelocity.y = throwGravity;
             playerHold--;
-            MaxGrenade--;
+           
            //GrenadeVelocity.y = throwForce;
             GameManager.instance.GrenadeAmmoText.text = MaxGrenade.ToString("F0");
         }
